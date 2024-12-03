@@ -1,7 +1,7 @@
 class TextInputNode:
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"text": ("STRING", {"multiline": True})}}
+        return {"required": {"text": ("STRING", {"multiline": True, "defaultVal": ""})}}
 
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("text",)

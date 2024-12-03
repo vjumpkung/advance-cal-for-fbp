@@ -9,6 +9,9 @@ from predefined_nodes.string.StringConcat import StringConcatNode
 from predefined_nodes.string.StringInput import TextInputNode
 from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
+from predefined_nodes.numpy.ndarray import createNumpy1DArray
+from predefined_nodes.stdout.PrintAny import PrintAny
+from predefined_nodes.stdout.ShowText import ShowText
 
 import logging
 import threading
@@ -57,6 +60,9 @@ NODE_CLASS_MAPPINGS: dict = {
     "TextInputNode": TextInputNode,
     "ConvertFloatToString": ConvertFloatToString,
     "StringConcatNode": StringConcatNode,
+    "Print into console": PrintAny,
+    "create numpy 1d array": createNumpy1DArray,
+    "ShowText": ShowText,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -70,6 +76,9 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "TextInputNode": "String Value Input",
     "ConvertFloatToString": "Convert Float To String",
     "StringConcatNode": "Combine String",
+    "Print into console": "Print",
+    "create numpy 1d array": "create np 1D array",
+    "ShowText": "Show Text",
 }
 
 

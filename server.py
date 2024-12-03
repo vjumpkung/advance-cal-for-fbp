@@ -86,6 +86,8 @@ class WorkflowServer:
 
         self.on_workflow_handlers = []
 
+        self.web_root = os.path.join(os.path.dirname(os.path.realpath(__file__)), "web")
+
         @routes.get("/ws")
         async def websocket_handler(request):
             ws = web.WebSocketResponse()
@@ -118,13 +120,9 @@ class WorkflowServer:
             return ws
 
         # TODO : will make custom frontend later
-        # @routes.get("/")
-        # async def get_root(request):
-        #     response = web.FileResponse(os.path.join(self.web_root, "index.html"))
-        #     response.headers["Cache-Control"] = "no-cache"
-        #     response.headers["Pragma"] = "no-cache"
-        #     response.headers["Expires"] = "0"
-        #     return response
+        @routes.get("/")
+        async def get_root(request: web.Request):
+            return web.FileResponse(os.path.join(self.web_root, "index.html"))
 
         def compare_file_hash(filepath, file):
             hasher = hashlib.md5
@@ -404,9 +402,11 @@ class WorkflowServer:
         #         ]
         #     )
 
-        # self.app.add_routes([
-        #     web.static('/', self.web_root),
-        # ])
+        self.app.add_routes(
+            [
+                web.static("/", self.web_root),
+            ]
+        )
 
     async def send(self, event, data, sid=None):
         # if event == BinaryEventTypes.UNENCODED_PREVIEW_IMAGE:

@@ -7,7 +7,6 @@ import uuid
 import os
 import hashlib
 import execution
-from app.user_manager import UserManager
 import traceback
 import nodes
 from typing import Optional
@@ -63,7 +62,6 @@ class WorkflowServer:
         mimetypes.init()
         mimetypes.types_map[".js"] = "application/javascript; charset=utf-8"
 
-        self.user_manager = UserManager()
         self.workflow_queue = None
         self.loop = loop
         self.messages = asyncio.Queue()
@@ -376,7 +374,6 @@ class WorkflowServer:
         self.client_session = aiohttp.ClientSession(timeout=timeout)
 
     def add_routes(self):
-        self.user_manager.add_routes(self.routes)
         # self.app.add_subapp("/internal", self.internal_routes.get_app())
 
         # Prefix every route with /api for easier matching for delegation.

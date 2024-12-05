@@ -1,8 +1,8 @@
 __pycache__/
 *.py[cod]
 /output/
-/input/
-!/input/example.png
+/input/*
+!/input/file_goes_here
 /temp/
 /custom_nodes/
 !custom_nodes/example_node.py.example

@@ -38,19 +38,24 @@ async def cache_control(request: web.Request, handler):
 def create_cors_middleware(allowed_origin: str):
     @web.middleware
     async def cors_middleware(request: web.Request, handler):
-        if request.method == "OPTIONS":
-            # Pre-flight request. Reply successfully:
-            response = web.Response()
-        else:
-            response = await handler(request)
+        try:
+            if request.method == "OPTIONS":
+                # Pre-flight request. Reply successfully:
+                response = web.Response()
+            else:
+                response = await handler(request)
 
-        response.headers["Access-Control-Allow-Origin"] = allowed_origin
-        response.headers["Access-Control-Allow-Methods"] = (
-            "POST, GET, DELETE, PUT, OPTIONS"
-        )
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-        response.headers["Access-Control-Allow-Credentials"] = "true"
-        return response
+            response.headers["Access-Control-Allow-Origin"] = allowed_origin
+            response.headers["Access-Control-Allow-Methods"] = (
+                "POST, GET, DELETE, PUT, OPTIONS"
+            )
+            response.headers["Access-Control-Allow-Headers"] = (
+                "Content-Type, Authorization"
+            )
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+            return response
+        except Exception as e:
+            logging.error(f"Error in CORS middleware: {e}")
 
     return cors_middleware
 
@@ -71,7 +76,7 @@ class WorkflowServer:
         middlewares = [cache_control]
         middlewares.append(create_cors_middleware("*"))
 
-        max_upload_size = round(1 * 1024 * 1024)  # 1 MB
+        max_upload_size = round(100 * 1024 * 1024)  # 100 MB
         self.app = web.Application(
             client_max_size=max_upload_size, middlewares=middlewares
         )
@@ -191,13 +196,7 @@ class WorkflowServer:
                     with open(filepath, "wb") as f:
                         f.write(file.file.read())
 
-                return web.json_response(
-                    {
-                        "name": filename,
-                        "subfolder": subfolder,
-                        "type": image_upload_type,
-                    }
-                )
+                return web.json_response({"path": os.path.abspath(filepath)})
 
         @routes.post("/upload/file")
         async def upload_file(request):

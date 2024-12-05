@@ -12,6 +12,7 @@ from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
 from predefined_nodes.numpy.ndarray import createNumpy1DArray
 from predefined_nodes.stdout.PrintAny import PrintAny
 from predefined_nodes.stdout.ShowText import ShowText
+from predefined_nodes.stdin.ReadFile import ReadFile
 
 import logging
 import threading
@@ -63,6 +64,7 @@ NODE_CLASS_MAPPINGS: dict = {
     "Print into console": PrintAny,
     "create numpy 1d array": createNumpy1DArray,
     "ShowText": ShowText,
+    "ReadFile": ReadFile,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -79,6 +81,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "Print into console": "Print",
     "create numpy 1d array": "create np 1D array",
     "ShowText": "Show Text",
+    "ReadFile": "Read File from path",
 }
 
 

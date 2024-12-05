@@ -4,11 +4,7 @@ class ShowText:
         return {
             "required": {
                 "text": ("STRING", {"forceInput": True}),
-            },
-            "hidden": {
-                "unique_id": "UNIQUE_ID",
-                "extra_pnginfo": "EXTRA_PNGINFO",
-            },
+            }
         }
 
     INPUT_IS_LIST = True
@@ -19,5 +15,13 @@ class ShowText:
 
     CATEGORY = "base"
 
-    def notify(self, text, unique_id=None, extra_pnginfo=None):
-        return {"ui": {"text": text}, "result": (text,)}
+    def notify(self, text):
+        if len(str(text)) > 1000:
+            print(str(text))
+            warntext = r"Warning: The text is too long to be displayed in the console."
+            return {
+                "ui": {"text": (warntext,)},
+                "result": (warntext,),
+            }
+        else:
+            return {"ui": {"text": text}, "result": (text,)}

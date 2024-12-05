@@ -19,6 +19,53 @@ async def run(server, address="", port=4047, verbose=True, call_on_start=None):
     )
 
 
+def clean_input_directory(file_to_preserve=None):
+    """
+    Clean the ./input/ directory by removing all files except the specified file.
+
+    Args:
+        file_to_preserve (str, optional): Name of the file to keep in the directory.
+                                          If None, no files will be preserved.
+
+    Returns:
+        tuple: (list of removed files, list of preserved files)
+    """
+    # Ensure the input directory exists
+    input_dir = "./input/"
+    if not os.path.exists(input_dir):
+        print(f"Directory {input_dir} does not exist.")
+        return [], []
+
+    # Get list of all files in the directory
+    all_files = os.listdir(input_dir)
+
+    # Separate files to remove and preserve
+    files_to_remove = []
+    files_preserved = []
+
+    for filename in all_files:
+        file_path = os.path.join(input_dir, filename)
+
+        # Skip if it's a directory
+        if os.path.isdir(file_path):
+            continue
+
+        # Check if this is the file to preserve
+        if file_to_preserve and filename == file_to_preserve:
+            files_preserved.append(filename)
+            continue
+
+        # Remove the file
+        try:
+            os.remove(file_path)
+            files_to_remove.append(filename)
+            # print(f"Removed: {filename}")
+        except Exception as e:
+            logging.ERROR(f"Error removing {filename}: {e}")
+
+    return files_to_remove, files_preserved
+
+
 def clean_pycache(directory):
     # Walk through the directory
     for root, dirs, files in os.walk(directory):
@@ -68,6 +115,7 @@ def workflow_worker(q, server):
 
 
 if __name__ == "__main__":
+    clean_input_directory("file_goes_here")
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -109,3 +157,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logging.info("Stopped server")
         clean_pycache(".")
+        clean_input_directory("file_goes_here")

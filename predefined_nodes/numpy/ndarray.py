@@ -6,7 +6,7 @@ class createNumpy1DArray:
     def INPUT_TYPES(cls):
         inputs = {
             "required": {
-                "ipt": ("STRING", {"defaultVal": "1,2,3"}),
+                "input_array": ("STRING", {"defaultVal": "1,2,3"}),
             }
         }
 

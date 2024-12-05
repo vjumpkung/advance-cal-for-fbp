@@ -1,3 +1,6 @@
+from time import sleep
+
+
 class ConvertFloatToString:
     @classmethod
     def INPUT_TYPES(cls):
@@ -19,4 +22,5 @@ class ConvertFloatToString:
     CATEGORY = "base"
 
     def convert_to_string(self, float_number):
+        sleep(5)
         return (str(float_number),)

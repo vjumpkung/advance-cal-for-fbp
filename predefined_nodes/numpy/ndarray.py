@@ -18,6 +18,6 @@ class createNumpy1DArray:
     FUNCTION = "create_numpy_1d_array"
     CATEGORY = "numpy"
 
-    def create_numpy_1d_array(self, ipt):
-        lst = list(map(int, ipt.split(",")))
+    def create_numpy_1d_array(self, input_array):
+        lst = list(map(int, input_array.split(",")))
         return (np.array(lst),)

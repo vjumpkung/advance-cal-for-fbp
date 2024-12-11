@@ -1,8 +1,4 @@
 # importing nodes
-from predefined_nodes.basic_arithmetic.Addition import AddNode
-from predefined_nodes.basic_arithmetic.Subtraction import SubtractNode
-from predefined_nodes.basic_arithmetic.Multiplication import MultiplyNode
-from predefined_nodes.basic_arithmetic.Division import DivideNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
 from predefined_nodes.stdout.PrintFloat import OutputFloatToStdoutNode
 from predefined_nodes.stdout.PrintString import OutputStringToStdoutNode
@@ -57,10 +53,6 @@ def throw_exception_if_processing_interrupted():
 
 
 NODE_CLASS_MAPPINGS: dict = {
-    "Add": AddNode,
-    "Subtract": SubtractNode,
-    "Multiply": MultiplyNode,
-    "Divide": DivideNode,
     "MathOperations": MathOperations,
     "FLOATValue": FloatInputNode,
     "OutputFloatToStdout": OutputFloatToStdoutNode,
@@ -75,10 +67,6 @@ NODE_CLASS_MAPPINGS: dict = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "Add": "Addition",
-    "Subtract": "Subtraction",
-    "Multiply": "Multiplication",
-    "Divide": "Division",
     "MathOperations": "Math Operations",
     "FLOATValue": "Float Value Input",
     "OutputFloatToStdout": "Print Float into Console",

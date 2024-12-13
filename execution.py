@@ -8,6 +8,7 @@ import traceback
 from enum import Enum
 import inspect
 from typing import List, Literal, NamedTuple, Optional
+from thread_manager import interrupt_completed
 
 import nodes
 
@@ -187,8 +188,8 @@ def _map_node_over_list(
     results = []
 
     def process_inputs(inputs, index=None):
-        # if allow_interrupt:
-        #     nodes.before_node_execution()
+        if allow_interrupt:
+            nodes.before_node_execution()
         execution_block = None
         for k, v in inputs.items():
             if isinstance(v, ExecutionBlocker):
@@ -482,15 +483,6 @@ def execute(
             pending_subgraph_results[unique_id] = cached_outputs
             return (ExecutionResult.PENDING, None, None)
         caches.outputs.set(unique_id, output_data)
-    except InterruptProcessingException as iex:
-        logging.info("Processing interrupted")
-
-        # skip formatting inputs/outputs
-        error_details = {
-            "node_id": real_node_id,
-        }
-
-        return (ExecutionResult.FAILURE, error_details, iex)
     except Exception as ex:
         typ, _, tb = sys.exc_info()
         exception_type = full_type_name(typ)
@@ -513,6 +505,8 @@ def execute(
         return (ExecutionResult.FAILURE, error_details, ex)
 
     executed.add(unique_id)
+    
+    interrupt_completed.set()
 
     return (ExecutionResult.SUCCESS, None, None)
 
@@ -568,7 +562,8 @@ class WorkflowExecutor:
             self.add_message("execution_error", mes, broadcast=False)
 
     def execute(self, workflow, workflow_id, extra_data={}, execute_outputs=[]):
-        # nodes.interrupt_processing(False)
+
+        nodes.interrupt_processing = False
 
         if "client_id" in extra_data:
             self.server.client_id = extra_data["client_id"]
@@ -662,6 +657,7 @@ class WorkflowExecutor:
             "meta": meta_outputs,
         }
         self.server.last_node_id = None
+        
 
 
 def validate_inputs(workflow, item, validated):
@@ -1058,6 +1054,9 @@ class WorkflowQueue:
         self, item_id, history_result, status: Optional["WorkflowQueue.ExecutionStatus"]
     ):
         with self.mutex:
+            if history_result == None:
+                return
+
             workflow = self.currently_running.pop(item_id)
             if len(self.history) > MAXIMUM_HISTORY_SIZE:
                 self.history.pop(next(iter(self.history)))

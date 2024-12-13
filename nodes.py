@@ -52,6 +52,10 @@ def throw_exception_if_processing_interrupted():
             raise InterruptProcessingException()
 
 
+def before_node_execution():
+    throw_exception_if_processing_interrupted()
+
+
 NODE_CLASS_MAPPINGS: dict = {
     "MathOperations": MathOperations,
     "FLOATValue": FloatInputNode,

@@ -7,6 +7,8 @@ import time
 import execution
 import threading
 import shutil
+from thread_manager import interrupt_completed,StoppableThread
+from time import sleep
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s [%(levelname)s]  %(message)s"
@@ -79,39 +81,90 @@ def clean_pycache(directory):
                 logging.ERROR(f"Failed to delete {pycache_path}: {e}")
 
 
-def workflow_worker(q, server):
-    e = execution.WorkflowExecutor(server)
+def interrupt_checker():
 
     while True:
-        timeout = 1000.0
+        sleep(1)
+        # print(interrupt_completed.is_set())
+        if interrupt_completed.is_set():
+            return
 
+
+def workflow_worker(q, server):
+    e = execution.WorkflowExecutor(server)
+    while True:
+        timeout = 1000.0
         queue_item = q.get(timeout=timeout)
         if queue_item is not None:
-            item, item_id = queue_item
             execution_start_time = time.perf_counter()
-            prompt_id = item[1]
-            server.last_prompt_id = prompt_id
-
-            e.execute(item[2], prompt_id, item[3], item[4])
-            q.task_done(
-                item_id,
-                e.history_result,
-                status=execution.WorkflowQueue.ExecutionStatus(
-                    status_str="success" if e.success else "error",
-                    completed=e.success,
-                    messages=e.status_messages,
-                ),
-            )
-            if server.client_id is not None:
-                server.send_sync(
-                    "executing",
-                    {"node": None, "prompt_id": prompt_id},
-                    server.client_id,
+            item, item_id = queue_item
+            workflow_id = item[1]
+            server.last_prompt_id = workflow_id
+            try:
+                executor = StoppableThread(
+                    target=e.execute,
+                    daemon=True,
+                    args=(item[2], workflow_id, item[3], item[4]),
+                )
+                interrupt = threading.Thread(
+                    target=interrupt_checker,
                 )
 
-            current_time = time.perf_counter()
-            execution_time = current_time - execution_start_time
-            logging.info("Workflow executed in {:.2f} seconds".format(execution_time))
+                interrupt.start()
+                executor.start()
+                interrupt.join()
+                # interrupt_completed.wait()
+                # logging.debug(interrupt_completed.is_set())
+                if executor.is_alive():
+                    executor.kill()
+                    raise InterruptedError
+                q.task_done(
+                    item_id,
+                    e.history_result,
+                    status=execution.WorkflowQueue.ExecutionStatus(
+                        status_str="success" if e.success else "error",
+                        completed=e.success,
+                        messages=e.status_messages,
+                    ),
+                )
+                if server.client_id is not None:
+                    server.send_sync(
+                        "executing",
+                        {"node": None, "prompt_id": workflow_id},
+                        server.client_id,
+                    )
+
+                current_time = time.perf_counter()
+                execution_time = current_time - execution_start_time
+                
+            except InterruptedError:
+                logging.info("Workflow execution was interrupted")
+                q.task_done(
+                    item_id,
+                    None,
+                    status=execution.WorkflowQueue.ExecutionStatus(
+                        status_str="error",
+                        completed=False,
+                        messages=["Execution was interrupted"],
+                    ),
+                )
+                msg = {
+                    "workflow_id": workflow_id,
+                    "node_id": None,
+                    "node_type": None,
+                    "executed": None,
+                    "exception_message": f"Workflow has been stopped by user.",
+                    "exception_type": "InterruptedError",
+                    "traceback": [],
+                    "current_inputs": [],
+                    "current_outputs": [],
+                }
+                current_time = time.perf_counter()
+                execution_time = current_time - execution_start_time
+                server.send_sync("execution_error", msg, server.client_id)
+            finally:
+                logging.info("Workflow executed in {:.2f} seconds".format(execution_time))
+                interrupt_completed.clear()
 
 
 if __name__ == "__main__":

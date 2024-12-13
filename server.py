@@ -9,6 +9,7 @@ import hashlib
 import execution
 import traceback
 import nodes
+from thread_manager import interrupt_completed
 from typing import Optional
 
 output_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "output")
@@ -352,7 +353,8 @@ class WorkflowServer:
 
         @routes.post("/interrupt")
         async def post_interrupt(request):
-            nodes.interrupt_processing()
+            # nodes.interrupt_current_processing()
+            interrupt_completed.set()
             return web.Response(status=200)
 
         @routes.post("/history")

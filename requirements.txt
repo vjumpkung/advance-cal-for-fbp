@@ -1,2 +1,7 @@
-aiohttp==3.10.5
+aiohttp
 numpy<2
+pandas
+matplotlib
+seaborn
+scikit-learn
+sniffio>=1.1

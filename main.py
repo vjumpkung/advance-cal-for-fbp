@@ -7,7 +7,7 @@ import time
 import execution
 import threading
 import shutil
-from thread_manager import interrupt_completed,StoppableThread
+from thread_manager import interrupt_completed, StoppableThread
 from time import sleep
 
 logging.basicConfig(
@@ -82,17 +82,17 @@ def clean_pycache(directory):
 
 
 def interrupt_checker():
-
+    # print(interrupt_completed.is_set())
     while True:
-        sleep(1)
+        # sleep(1)
         # print(interrupt_completed.is_set())
         if interrupt_completed.is_set():
             return
 
 
 def workflow_worker(q, server):
-    e = execution.WorkflowExecutor(server)
     while True:
+        e = execution.WorkflowExecutor(server)
         timeout = 1000.0
         queue_item = q.get(timeout=timeout)
         if queue_item is not None:
@@ -106,18 +106,22 @@ def workflow_worker(q, server):
                     daemon=True,
                     args=(item[2], workflow_id, item[3], item[4]),
                 )
-                interrupt = threading.Thread(
-                    target=interrupt_checker,
-                )
+                interrupt = StoppableThread(target=interrupt_checker, daemon=True)
 
                 interrupt.start()
                 executor.start()
+                interrupt_completed.wait()
+                # print(e.success)
+
+                while executor.is_alive():
+                    # sleep(1)
+                    if not interrupt.is_alive():
+                        executor.kill()
+                        raise InterruptedError
+
+                # executor.join()
                 interrupt.join()
-                # interrupt_completed.wait()
-                # logging.debug(interrupt_completed.is_set())
-                if executor.is_alive():
-                    executor.kill()
-                    raise InterruptedError
+
                 q.task_done(
                     item_id,
                     e.history_result,
@@ -127,6 +131,7 @@ def workflow_worker(q, server):
                         messages=e.status_messages,
                     ),
                 )
+
                 if server.client_id is not None:
                     server.send_sync(
                         "executing",
@@ -136,7 +141,7 @@ def workflow_worker(q, server):
 
                 current_time = time.perf_counter()
                 execution_time = current_time - execution_start_time
-                
+
             except InterruptedError:
                 logging.info("Workflow execution was interrupted")
                 q.task_done(
@@ -163,7 +168,10 @@ def workflow_worker(q, server):
                 execution_time = current_time - execution_start_time
                 server.send_sync("execution_error", msg, server.client_id)
             finally:
-                logging.info("Workflow executed in {:.2f} seconds".format(execution_time))
+                logging.info(
+                    "Workflow executed in {:.2f} seconds".format(execution_time)
+                )
+
                 interrupt_completed.clear()
 
 

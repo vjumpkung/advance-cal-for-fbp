@@ -10,9 +10,13 @@ from predefined_nodes.stdout.PrintAny import PrintAny
 from predefined_nodes.stdout.ShowText import ShowText
 from predefined_nodes.stdin.ReadFile import ReadFile
 from predefined_nodes.stdout.WriteFile import WriteFile
+from predefined_nodes.pandas.PandasReadFile import PandasReadFile
+from predefined_nodes.pandas.ValueCount import PandasValueCounts
+from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 
 import traceback
 import importlib
+import importlib.util
 import logging
 import threading
 import time
@@ -68,6 +72,9 @@ NODE_CLASS_MAPPINGS: dict = {
     "ShowText": ShowText,
     "ReadFile": ReadFile,
     "WriteFile": WriteFile,
+    "PandasReadFile": PandasReadFile,
+    "PandasValueCounts": PandasValueCounts,
+    "AnyToString": ConvertAnyToString,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -82,6 +89,9 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ShowText": "Show Text",
     "ReadFile": "Read File from path",
     "WriteFile": "Write string into text file.",
+    "PandasReadFile": "Pandas Read File",
+    "PandasValueCounts": "Pandas Count unique values in specific column",
+    "AnyToString": "Convert Any To String",
 }
 
 folder_names_and_paths = {}

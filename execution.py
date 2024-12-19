@@ -505,8 +505,6 @@ def execute(
         return (ExecutionResult.FAILURE, error_details, ex)
 
     executed.add(unique_id)
-    
-    interrupt_completed.set()
 
     return (ExecutionResult.SUCCESS, None, None)
 
@@ -562,6 +560,8 @@ class WorkflowExecutor:
             self.add_message("execution_error", mes, broadcast=False)
 
     def execute(self, workflow, workflow_id, extra_data={}, execute_outputs=[]):
+
+        self.success = True
 
         nodes.interrupt_processing = False
 
@@ -633,6 +633,7 @@ class WorkflowExecutor:
                     error,
                     ex,
                 )
+                self.success = False
                 break
             elif result == ExecutionResult.PENDING:
                 execution_list.unstage_node_execution()
@@ -657,7 +658,8 @@ class WorkflowExecutor:
             "meta": meta_outputs,
         }
         self.server.last_node_id = None
-        
+
+        interrupt_completed.set()
 
 
 def validate_inputs(workflow, item, validated):

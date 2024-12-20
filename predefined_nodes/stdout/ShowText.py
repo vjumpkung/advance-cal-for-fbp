@@ -6,25 +6,25 @@ class ShowText:
     def INPUT_TYPES(s):
         return {
             "optional": {
-                "any": (any,),
+                "text": ("STRING", {"forceInput": True}),
             }
         }
 
     INPUT_IS_LIST = True
-    RETURN_TYPES = ("any",)
+    RETURN_TYPES = ("STRING",)
     FUNCTION = "notify"
     OUTPUT_NODE = True
-    OUTPUT_IS_LIST = (True,)
+    # OUTPUT_IS_LIST = (True,)
 
     CATEGORY = "base"
 
-    def notify(self, any):
-        if len(str(any)) > 1000:
-            print(str(any))
+    def notify(self, text):
+        if len(text) > 1000:
+            print(text)
             warntext = r"Warning: The text is too long to be displayed in the console."
             return {
                 "ui": {"text": (warntext,)},
                 "result": (warntext,),
             }
         else:
-            return {"ui": {"text": (any,)}, "result": (any,)}
+            return {"ui": {"text": (text,)}, "result": (text,)}

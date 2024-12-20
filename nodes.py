@@ -94,7 +94,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ReadFile": "Read File from path",
     "WriteFile": "Write string into text file.",
     "PandasReadFile": "Pandas Read File",
-    "PandasValueCounts": "Pandas Count unique values in specific column",
+    "PandasValueCounts": "Pandas Count unique values",
     "AnyToString": "Convert Any To String",
     "ShowMissingValueHeatMap": "Show Missing Value Heatmap",
     "PandasSelectDtypes": "Pandas Select Datatypes",

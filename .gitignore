@@ -3,7 +3,8 @@ __pycache__/
 /output/
 /input/*
 !/input/file_goes_here
-/temp/
+/temp/*
+!/temp/temp_goes_here
 /custom_nodes/*
 !/custom_nodes/example_custom_node_file.py
 !/custom_nodes/example_custom_node_folder/

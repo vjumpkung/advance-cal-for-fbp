@@ -1,14 +1,15 @@
 import asyncio
-import server
-import nodes
 import logging
 import os
-import time
-import execution
-import threading
 import shutil
-from thread_manager import interrupt_completed, StoppableThread
+import threading
+import time
 from time import sleep
+
+import execution
+import nodes
+import server
+from thread_manager import StoppableThread, interrupt_completed
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s [%(levelname)s]  %(message)s"
@@ -21,7 +22,7 @@ async def run(server, address="", port=4047, verbose=True, call_on_start=None):
     )
 
 
-def clean_input_directory(file_to_preserve=None):
+def rm_files_in_directory(dir, file_to_preserve=None):
     """
     Clean the ./input/ directory by removing all files except the specified file.
 
@@ -33,7 +34,7 @@ def clean_input_directory(file_to_preserve=None):
         tuple: (list of removed files, list of preserved files)
     """
     # Ensure the input directory exists
-    input_dir = "./input/"
+    input_dir = dir
     if not os.path.exists(input_dir):
         print(f"Directory {input_dir} does not exist.")
         return [], []
@@ -176,7 +177,8 @@ def workflow_worker(q, server):
 
 
 if __name__ == "__main__":
-    clean_input_directory("file_goes_here")
+    rm_files_in_directory("./input/", "file_goes_here")
+    rm_files_in_directory("./temp/", "")
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -218,4 +220,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logging.info("Stopped server")
         clean_pycache(".")
-        clean_input_directory("file_goes_here")
+        rm_files_in_directory("./input/", "file_goes_here")
+        rm_files_in_directory("./temp/", "")

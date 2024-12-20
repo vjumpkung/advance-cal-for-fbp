@@ -1,27 +1,29 @@
 # importing nodes
-from predefined_nodes.basic_arithmetic.operations import MathOperations
-from predefined_nodes.stdout.PrintFloat import OutputFloatToStdoutNode
-from predefined_nodes.stdout.PrintString import OutputStringToStdoutNode
-from predefined_nodes.string.StringConcat import StringConcatNode
-from predefined_nodes.string.StringInput import TextInputNode
-from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
-from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
-from predefined_nodes.stdout.PrintAny import PrintAny
-from predefined_nodes.stdout.ShowText import ShowText
-from predefined_nodes.stdin.ReadFile import ReadFile
-from predefined_nodes.stdout.WriteFile import WriteFile
-from predefined_nodes.pandas.PandasReadFile import PandasReadFile
-from predefined_nodes.pandas.ValueCount import PandasValueCounts
-from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
-
-import traceback
 import importlib
 import importlib.util
 import logging
+import os
+import sys
 import threading
 import time
-import sys
-import os
+import traceback
+
+from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
+from predefined_nodes.basic_arithmetic.operations import MathOperations
+from predefined_nodes.pandas.PandasReadFile import PandasReadFile
+from predefined_nodes.pandas.ValueCount import PandasValueCounts
+from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
+from predefined_nodes.stdin.ReadFile import ReadFile
+from predefined_nodes.stdout.PrintAny import PrintAny
+from predefined_nodes.stdout.PrintFloat import OutputFloatToStdoutNode
+from predefined_nodes.stdout.PrintString import OutputStringToStdoutNode
+from predefined_nodes.stdout.ShowText import ShowText
+from predefined_nodes.stdout.WriteFile import WriteFile
+from predefined_nodes.string.StringConcat import StringConcatNode
+from predefined_nodes.string.StringInput import TextInputNode
+from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
+from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
+from predefined_nodes.pandas.CheckDataTypes import PandasCheckDtypes
 
 
 class InterruptProcessingException(Exception):
@@ -75,6 +77,8 @@ NODE_CLASS_MAPPINGS: dict = {
     "PandasReadFile": PandasReadFile,
     "PandasValueCounts": PandasValueCounts,
     "AnyToString": ConvertAnyToString,
+    "ShowMissingValueHeatMap": ShowMissingValueHeatMap,
+    "PandasSelectDtypes": PandasCheckDtypes,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -92,6 +96,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PandasReadFile": "Pandas Read File",
     "PandasValueCounts": "Pandas Count unique values in specific column",
     "AnyToString": "Convert Any To String",
+    "ShowMissingValueHeatMap": "Show Missing Value Heatmap",
+    "PandasSelectDtypes": "Pandas Select Datatypes",
 }
 
 folder_names_and_paths = {}

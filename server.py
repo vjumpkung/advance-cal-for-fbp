@@ -123,7 +123,6 @@ class WorkflowServer:
                 self.sockets.pop(sid, None)
             return ws
 
-        # TODO : will make custom frontend later
         @routes.get("/")
         async def get_root(request: web.Request):
             return web.FileResponse(os.path.join(self.web_root, "index.html"))

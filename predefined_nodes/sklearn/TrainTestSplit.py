@@ -15,13 +15,13 @@ class SklearnTrainTestSplit:
             }
         }
 
-    CATEGORY = "sklearn"
+    CATEGORY = "sklearn/model_selection"
 
     RETURN_NAMES = (
         "X_train",
         "X_test",
-        "y_train",
-        "y_test",
+        "Y_train",
+        "Y_test",
     )
 
     RETURN_TYPES = (
@@ -34,13 +34,22 @@ class SklearnTrainTestSplit:
     FUNCTION = "traintestsplit"
 
     def traintestsplit(self, X, Y, test_size, random_state):
-        X_train, X_test, y_train, y_test = train_test_split(
+
+        if test_size == 0:
+            return (
+                X,
+                None,
+                Y,
+                None,
+            )
+
+        X_train, X_test, Y_train, Y_test = train_test_split(
             X, Y, test_size=test_size, random_state=random_state
         )
 
         return (
             X_train,
             X_test,
-            y_train,
-            y_test,
+            Y_train,
+            Y_test,
         )

@@ -1,0 +1,20 @@
+{
+    "dark": {
+        "id": "dark",
+        "name": "Dark (Default)",
+        "colors": {
+            "node_slot": {
+                "INT": "#FFD500",
+                "FLOAT": "#A8DADC",
+                "STRING": "#ad7452",
+                "COMBO": "#FFA931",
+                "BOOLEAN": "#69247C",
+                "NDARRAY": "#6EE7B7",
+                "PD_DATAFRAME": "#FAC67A",
+                "PD_SERIES": "#3b4bff",
+                "LIST": "#C84C05",
+                "MODEL": "#9B3922"
+            }
+        }
+    }
+}

@@ -12,8 +12,12 @@ from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
 from predefined_nodes.pandas.CheckDataTypes import PandasCheckDtypes
 from predefined_nodes.pandas.PandasReadFile import PandasReadFile
+from predefined_nodes.pandas.SplitColumn import SplitColumn
 from predefined_nodes.pandas.ValueCount import PandasValueCounts
 from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
+from predefined_nodes.sklearn.LinearRegression import SklearnLinearRegression
+from predefined_nodes.sklearn.ModelScore import SklearnModelScore
+from predefined_nodes.sklearn.Predict import SklearnModelPredict
 from predefined_nodes.sklearn.TrainTestSplit import SklearnTrainTestSplit
 from predefined_nodes.stdin.ReadFile import ReadFile
 from predefined_nodes.stdout.PrintAny import PrintAny
@@ -25,7 +29,6 @@ from predefined_nodes.string.StringConcat import StringConcatNode
 from predefined_nodes.string.StringInput import TextInputNode
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
-from predefined_nodes.pandas.SplitColumn import SplitColumn
 
 
 class InterruptProcessingException(Exception):
@@ -83,6 +86,9 @@ NODE_CLASS_MAPPINGS: dict = {
     "PandasSelectDtypes": PandasCheckDtypes,
     "SklearnTrainTestSplit": SklearnTrainTestSplit,
     "PandasSplitColumn": SplitColumn,
+    "SklearnLinearRegression": SklearnLinearRegression,
+    "SklearnModelPredict": SklearnModelPredict,
+    "SklearnModelScore": SklearnModelScore,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -102,8 +108,11 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "AnyToString": "Convert Any To String",
     "ShowMissingValueHeatMap": "Show Missing Value Heatmap",
     "PandasSelectDtypes": "Pandas Select Datatypes",
-    "SklearnTrainTestSplit": "SklearnTrainTestSplit",
+    "SklearnTrainTestSplit": "Data Train Test Split",
     "PandasSplitColumn": "Pandas Split Column",
+    "SklearnLinearRegression": "Linear Regression",
+    "SklearnModelPredict": "Model Predict",
+    "SklearnModelScore": "Genearate Model Score",
 }
 
 folder_names_and_paths = {}

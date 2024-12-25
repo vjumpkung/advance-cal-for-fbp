@@ -9,6 +9,7 @@ import hashlib
 import execution
 import traceback
 import nodes
+import json
 from thread_manager import interrupt_completed
 from typing import Optional
 
@@ -368,6 +369,13 @@ class WorkflowServer:
                     self.workflow_queue.delete_history_item(id_to_delete)
 
             return web.Response(status=200)
+
+        @routes.get("/color_palette")
+        async def get_color_palette(request):
+            with open("config/color_palette.json", "r") as fp:
+                color_palette = json.load(fp)
+
+            return web.json_response(color_palette)
 
     async def setup(self):
         timeout = aiohttp.ClientTimeout(total=None)  # no timeout

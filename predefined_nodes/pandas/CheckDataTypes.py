@@ -7,12 +7,12 @@ class PandasCheckDtypes:
         return {
             "required": {
                 "dataframe": ("PD_DATAFRAME",),
-                "number": ("BOOLEAN", {"default": False}),
-                "object": ("BOOLEAN", {"default": False}),
-                "datetime": ("BOOLEAN", {"default": False}),
-                "timedelta": ("BOOLEAN", {"default": False}),
-                "category": ("BOOLEAN", {"default": False}),
-                "datetimetz": ("BOOLEAN", {"default": False}),
+                "number": ("BOOLEAN", {"defaultVal": False}),
+                "object": ("BOOLEAN", {"defaultVal": False}),
+                "datetime": ("BOOLEAN", {"defaultVal": False}),
+                "timedelta": ("BOOLEAN", {"defaultVal": False}),
+                "category": ("BOOLEAN", {"defaultVal": False}),
+                "datetimetz": ("BOOLEAN", {"defaultVal": False}),
             }
         }
 

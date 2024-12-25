@@ -19,7 +19,7 @@ class SplitColumn:
     )
 
     RETURN_TYPES = (
-        "PD_SERIES",
+        "PD_DATAFRAME",
         "PD_SERIES",
     )
 

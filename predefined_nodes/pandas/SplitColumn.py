@@ -26,8 +26,9 @@ class SplitColumn:
     FUNCTION = "pandas_split_column"
 
     def pandas_split_column(self, dataframe: pd.DataFrame, column: str):
-        df1 = dataframe[column]
-        df2 = dataframe.drop(column, axis=1)
+        column_lst = column.split(",")
+        df1 = dataframe[column_lst]
+        df2 = dataframe.drop(column_lst, axis=1)
 
         return (
             df2,

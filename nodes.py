@@ -11,11 +11,18 @@ import traceback
 from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
 from predefined_nodes.pandas.CheckDataTypes import PandasCheckDtypes
+from predefined_nodes.pandas.ColumnStatisticsCalculate import (
+    PandasColumnStatisticsCalculate,
+)
+from predefined_nodes.pandas.DropColumn import PandasDropColumn
+from predefined_nodes.pandas.FillNA import PandasFillNA
 from predefined_nodes.pandas.PandasReadFile import PandasReadFile
+from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
 from predefined_nodes.pandas.SplitColumn import SplitColumn
 from predefined_nodes.pandas.ValueCount import PandasValueCounts
 from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
 from predefined_nodes.sklearn.LinearRegression import SklearnLinearRegression
+from predefined_nodes.sklearn.LogisticRegression import SklearnLogisticRegression
 from predefined_nodes.sklearn.ModelScore import SklearnModelScore
 from predefined_nodes.sklearn.Predict import SklearnModelPredict
 from predefined_nodes.sklearn.TrainTestSplit import SklearnTrainTestSplit
@@ -89,6 +96,11 @@ NODE_CLASS_MAPPINGS: dict = {
     "SklearnLinearRegression": SklearnLinearRegression,
     "SklearnModelPredict": SklearnModelPredict,
     "SklearnModelScore": SklearnModelScore,
+    "SklearnLogisticRegression": SklearnLogisticRegression,
+    "PandasDropColumn": PandasDropColumn,
+    "PandasFillNA": PandasFillNA,
+    "PandasRemoveNA": PandasRemoveNA,
+    "PandasColumnStatisticsCalculate": PandasColumnStatisticsCalculate,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -113,6 +125,11 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SklearnLinearRegression": "Linear Regression",
     "SklearnModelPredict": "Model Predict",
     "SklearnModelScore": "Genearate Model Score",
+    "SklearnLogisticRegression": "Logistic Regression",
+    "PandasDropColumn": "Drop Column",
+    "PandasFillNA": "Fill Missing Value",
+    "PandasRemoveNA": "Drop Missing Value Rows",
+    "PandasColumnStatisticsCalculate": "Statistics calculate in column",
 }
 
 folder_names_and_paths = {}

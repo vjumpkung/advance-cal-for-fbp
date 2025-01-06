@@ -4,6 +4,7 @@ import os
 import shutil
 import threading
 import time
+import gc
 
 import execution
 import nodes
@@ -170,6 +171,7 @@ def workflow_worker(q, server):
                 )
 
                 interrupt_completed.clear()
+                gc.collect()
 
 
 if __name__ == "__main__":

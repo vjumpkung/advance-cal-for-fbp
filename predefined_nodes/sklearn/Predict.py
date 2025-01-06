@@ -10,7 +10,7 @@ class SklearnModelPredict:
 
     RETURN_NAMES = ("Y_pred",)
 
-    RETURN_TYPES = ("LIST",)
+    RETURN_TYPES = ("NDARRAY",)
 
     FUNCTION = "model_pred"
 

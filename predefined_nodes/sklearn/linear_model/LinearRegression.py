@@ -6,11 +6,11 @@ class SklearnLinearRegression:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("LIST",),
-                "Y": ("LIST",),
-                "fit_intercept": ("BOOLEAN", {"default": True}),
-                "copy_X": ("BOOLEAN", {"default": True}),
-                "positive": ("BOOLEAN", {"default": False}),
+                "X": ("NDARRAY",),
+                "Y": ("NDARRAY",),
+                "fit_intercept": ("BOOLEAN", {"defaultVal": True}),
+                "copy_X": ("BOOLEAN", {"defaultVal": True}),
+                "positive": ("BOOLEAN", {"defaultVal": False}),
             }
         }
 

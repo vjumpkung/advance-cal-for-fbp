@@ -21,11 +21,25 @@ from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
 from predefined_nodes.pandas.SplitColumn import SplitColumn
 from predefined_nodes.pandas.ValueCount import PandasValueCounts
 from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
-from predefined_nodes.sklearn.LinearRegression import SklearnLinearRegression
-from predefined_nodes.sklearn.LogisticRegression import SklearnLogisticRegression
+from predefined_nodes.sklearn.compose.ColumnTransformers import SklearnColumnTransformer
+from predefined_nodes.sklearn.linear_model.LinearRegression import (
+    SklearnLinearRegression,
+)
+from predefined_nodes.sklearn.linear_model.LogisticRegression import (
+    SklearnLogisticRegression,
+)
+from predefined_nodes.sklearn.linear_model.TrainTestSplit import SklearnTrainTestSplit
 from predefined_nodes.sklearn.ModelScore import SklearnModelScore
 from predefined_nodes.sklearn.Predict import SklearnModelPredict
-from predefined_nodes.sklearn.TrainTestSplit import SklearnTrainTestSplit
+from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModel import (
+    SklearnFitTransformPreprocessModel,
+)
+from predefined_nodes.sklearn.preprocessing.LabelEncoder import SklearnLabelEncoder
+from predefined_nodes.sklearn.preprocessing.OneHotEncoder import SklearnOneHotEncoder
+from predefined_nodes.sklearn.preprocessing.StandardScaler import SklearnStandardScaler
+from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodel import (
+    SklearnTransformPreprocessModel,
+)
 from predefined_nodes.stdin.ReadFile import ReadFile
 from predefined_nodes.stdout.PrintAny import PrintAny
 from predefined_nodes.stdout.PrintFloat import OutputFloatToStdoutNode
@@ -34,6 +48,7 @@ from predefined_nodes.stdout.ShowText import ShowText
 from predefined_nodes.stdout.WriteFile import WriteFile
 from predefined_nodes.string.StringConcat import StringConcatNode
 from predefined_nodes.string.StringInput import TextInputNode
+from predefined_nodes.types_conversion.AnyToList import AnyToList
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
 
@@ -97,10 +112,17 @@ NODE_CLASS_MAPPINGS: dict = {
     "SklearnModelPredict": SklearnModelPredict,
     "SklearnModelScore": SklearnModelScore,
     "SklearnLogisticRegression": SklearnLogisticRegression,
+    "SklearnFitTransformPreprocessModel": SklearnFitTransformPreprocessModel,
+    "SklearnLabelEncoder": SklearnLabelEncoder,
     "PandasDropColumn": PandasDropColumn,
     "PandasFillNA": PandasFillNA,
     "PandasRemoveNA": PandasRemoveNA,
     "PandasColumnStatisticsCalculate": PandasColumnStatisticsCalculate,
+    "SklearnOneHotEncoder": SklearnOneHotEncoder,
+    "AnyToList": AnyToList,
+    "SklearnColumnTransformer": SklearnColumnTransformer,
+    "SklearnStandardScaler": SklearnStandardScaler,
+    "SklearnTransformPreprocessModel": SklearnTransformPreprocessModel,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -126,10 +148,17 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SklearnModelPredict": "Model Predict",
     "SklearnModelScore": "Genearate Model Score",
     "SklearnLogisticRegression": "Logistic Regression",
+    "SklearnFitTransformPreprocessModel": "Fit Transform data using Preprocessing Model",
     "PandasDropColumn": "Drop Column",
     "PandasFillNA": "Fill Missing Value",
     "PandasRemoveNA": "Drop Missing Value Rows",
     "PandasColumnStatisticsCalculate": "Statistics calculate in column",
+    "SklearnLabelEncoder": "Label Encoder Preprocessing Model",
+    "SklearnOneHotEncoder": "One Hot Encoder Preprocessing Model",
+    "AnyToList": "Convert To List",
+    "SklearnColumnTransformer": "Column Transformer",
+    "SklearnStandardScaler": "Standard Scaler Preprocessing Model",
+    "SklearnTransformPreprocessModel": "Transform data using Preprocessing Model",
 }
 
 folder_names_and_paths = {}

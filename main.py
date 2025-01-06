@@ -4,7 +4,6 @@ import os
 import shutil
 import threading
 import time
-from time import sleep
 
 import execution
 import nodes
@@ -83,10 +82,7 @@ def clean_pycache(directory):
 
 
 def interrupt_checker():
-    # print(interrupt_completed.is_set())
     while True:
-        # sleep(1)
-        # print(interrupt_completed.is_set())
         if interrupt_completed.is_set():
             return
 
@@ -202,7 +198,7 @@ if __name__ == "__main__":
 
         if os.name == "nt" and address == "0.0.0.0":
             address = "127.0.0.1"
-        # webbrowser.open(f"{scheme}://{address}:{port}")
+        webbrowser.open(f"{scheme}://{address}:{port}")
 
     call_on_start = startup_server
 

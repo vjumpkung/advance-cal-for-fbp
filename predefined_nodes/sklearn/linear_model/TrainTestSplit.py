@@ -25,10 +25,10 @@ class SklearnTrainTestSplit:
     )
 
     RETURN_TYPES = (
-        "LIST",
-        "LIST",
-        "LIST",
-        "LIST",
+        "NDARRAY",
+        "NDARRAY",
+        "NDARRAY",
+        "NDARRAY",
     )
 
     FUNCTION = "traintestsplit"

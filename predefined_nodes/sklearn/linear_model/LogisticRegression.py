@@ -6,8 +6,8 @@ class SklearnLogisticRegression:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("LIST",),
-                "Y": ("LIST",),
+                "X": ("NDARRAY",),
+                "Y": ("NDARRAY",),
                 "random_state": ("INT", {"default": 42}),
             }
         }

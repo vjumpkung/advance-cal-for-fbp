@@ -2,7 +2,7 @@ from predefined_nodes.types.any import any
 import numpy as np
 
 
-class AnyToList:
+class AnyToNumPyArray:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -17,7 +17,7 @@ class AnyToList:
         }
 
     RETURN_TYPES = ("NDARRAY",)
-    RETURN_NAMES = ("list",)
+    RETURN_NAMES = ("np_array",)
     FUNCTION = "convert_to_list"
     CATEGORY = "types_conversion"
 

@@ -14,31 +14,50 @@ from predefined_nodes.pandas.CheckDataTypes import PandasCheckDtypes
 from predefined_nodes.pandas.ColumnStatisticsCalculate import (
     PandasColumnStatisticsCalculate,
 )
+from predefined_nodes.pandas.CombineColumn import PandasCombineColumn
 from predefined_nodes.pandas.DropColumn import PandasDropColumn
 from predefined_nodes.pandas.FillNA import PandasFillNA
+from predefined_nodes.pandas.MathOperationIntoColumn import (
+    PandasMathOperationIntoColumn,
+)
 from predefined_nodes.pandas.PandasReadFile import PandasReadFile
 from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
 from predefined_nodes.pandas.SplitColumn import SplitColumn
 from predefined_nodes.pandas.ValueCount import PandasValueCounts
 from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
 from predefined_nodes.sklearn.compose.ColumnTransformers import SklearnColumnTransformer
+from predefined_nodes.sklearn.impute.IterativeImputer import SklearnIterativeImputer
 from predefined_nodes.sklearn.linear_model.LinearRegression import (
     SklearnLinearRegression,
 )
 from predefined_nodes.sklearn.linear_model.LogisticRegression import (
     SklearnLogisticRegression,
 )
-from predefined_nodes.sklearn.linear_model.TrainTestSplit import SklearnTrainTestSplit
+from predefined_nodes.sklearn.metrics.ClassificationReport import (
+    SklearnClassificationReport,
+)
+from predefined_nodes.sklearn.model_selection.TrainTestSplit import (
+    SklearnTrainTestSplit,
+)
 from predefined_nodes.sklearn.ModelScore import SklearnModelScore
+from predefined_nodes.sklearn.neighbors.KNeighborsClassifier import (
+    SklearnKNeighborsClassifier,
+)
 from predefined_nodes.sklearn.Predict import SklearnModelPredict
 from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModel import (
     SklearnFitTransformPreprocessModel,
+)
+from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModelPandas import (
+    SklearnFitTransformPreprocessModelPandas,
 )
 from predefined_nodes.sklearn.preprocessing.LabelEncoder import SklearnLabelEncoder
 from predefined_nodes.sklearn.preprocessing.OneHotEncoder import SklearnOneHotEncoder
 from predefined_nodes.sklearn.preprocessing.StandardScaler import SklearnStandardScaler
 from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodel import (
     SklearnTransformPreprocessModel,
+)
+from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
+    SklearnTransformPreprocessModelPandas,
 )
 from predefined_nodes.stdin.ReadFile import ReadFile
 from predefined_nodes.stdout.PrintAny import PrintAny
@@ -48,7 +67,7 @@ from predefined_nodes.stdout.ShowText import ShowText
 from predefined_nodes.stdout.WriteFile import WriteFile
 from predefined_nodes.string.StringConcat import StringConcatNode
 from predefined_nodes.string.StringInput import TextInputNode
-from predefined_nodes.types_conversion.AnyToList import AnyToList
+from predefined_nodes.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
 
@@ -119,10 +138,17 @@ NODE_CLASS_MAPPINGS: dict = {
     "PandasRemoveNA": PandasRemoveNA,
     "PandasColumnStatisticsCalculate": PandasColumnStatisticsCalculate,
     "SklearnOneHotEncoder": SklearnOneHotEncoder,
-    "AnyToList": AnyToList,
+    "AnyToNumpyARray": AnyToNumPyArray,
     "SklearnColumnTransformer": SklearnColumnTransformer,
     "SklearnStandardScaler": SklearnStandardScaler,
     "SklearnTransformPreprocessModel": SklearnTransformPreprocessModel,
+    "SklearnKNeighborsClassifier": SklearnKNeighborsClassifier,
+    "SklearnClassificationReport": SklearnClassificationReport,
+    "PandasCombineColumn": PandasCombineColumn,
+    "PandasMathOperationIntoColumn": PandasMathOperationIntoColumn,
+    "SklearnIterativeImputerMICE": SklearnIterativeImputer,
+    "SklearnFitTransformPreprocessModelPandas": SklearnFitTransformPreprocessModelPandas,
+    "SklearnTransformPreprocessModelPandas": SklearnTransformPreprocessModelPandas,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -155,10 +181,17 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PandasColumnStatisticsCalculate": "Statistics calculate in column",
     "SklearnLabelEncoder": "Label Encoder Preprocessing Model",
     "SklearnOneHotEncoder": "One Hot Encoder Preprocessing Model",
-    "AnyToList": "Convert To List",
+    "AnyToList": "Convert To NumpyArray",
     "SklearnColumnTransformer": "Column Transformer",
     "SklearnStandardScaler": "Standard Scaler Preprocessing Model",
     "SklearnTransformPreprocessModel": "Transform data using Preprocessing Model",
+    "SklearnKNeighborsClassifier": "Known Nearest Neighbors (KNN) Model",
+    "SklearnClassificationReport": "Classificaton Report",
+    "PandasCombineColumn": "Combine Column(s) by math operation",
+    "PandasMathOperationIntoColumn": "Math operation into column(s)",
+    "SklearnIterativeImputerMICE": "MICE preprocessing method",
+    "SklearnFitTransformPreprocessModelPandas": "Fit Transform data using Preprocessing Model (PANDAS)",
+    "SklearnTransformPreprocessModelPandas": "Transform data using Preprocessing Model (PANDAS)",
 }
 
 folder_names_and_paths = {}

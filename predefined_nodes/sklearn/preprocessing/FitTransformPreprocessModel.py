@@ -31,9 +31,15 @@ class SklearnFitTransformPreprocessModel:
 
         if COLUMNS != "":
             columns_idx = [int(i) if i.isnumeric() else i for i in COLUMNS.split(",")]
-            NDARRAY[:, columns_idx] = preprocessing_model.fit_transform(
-                NDARRAY[:, columns_idx]
-            )
+
+            if len(columns_idx) == 1:
+                NDARRAY[:, *columns_idx] = preprocessing_model.fit_transform(
+                    NDARRAY[:, *columns_idx]
+                )
+            else:
+                NDARRAY[:, columns_idx] = preprocessing_model.fit_transform(
+                    NDARRAY[:, columns_idx]
+                )
             return (
                 NDARRAY,
                 preprocessing_model,

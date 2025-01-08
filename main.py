@@ -5,15 +5,20 @@ import shutil
 import threading
 import time
 import gc
+from check_python_version import check_python_version
 
 import execution
 import nodes
 import server
+import sys
 from thread_manager import StoppableThread, interrupt_completed
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s [%(levelname)s]  %(message)s"
 )
+
+if not check_python_version():
+    sys.exit()
 
 
 async def run(server, address="", port=4047, verbose=True, call_on_start=None):

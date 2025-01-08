@@ -14,13 +14,13 @@ class SplitColumn:
     CATEGORY = "pandas"
 
     RETURN_NAMES = (
-        "X",
-        "Y",
+        "DATAFRAME_1",
+        "DATAFRAME_2",
     )
 
     RETURN_TYPES = (
         "PD_DATAFRAME",
-        "PD_SERIES",
+        "PD_DATAFRAME",
     )
 
     FUNCTION = "pandas_split_column"

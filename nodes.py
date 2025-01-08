@@ -10,6 +10,14 @@ import traceback
 
 from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
+from predefined_nodes.imblearn.over_sampling.SMOTE import ImblearnSmote
+from predefined_nodes.mlxtend.frequent_patterns.apriori import MlxtendApriori
+from predefined_nodes.mlxtend.frequent_patterns.assosication_rules import (
+    MlxtendAssosicationRules,
+)
+from predefined_nodes.mlxtend.preprocessing.TransactionEncoder import (
+    MlxtendTransactionEncoder,
+)
 from predefined_nodes.pandas.AddColumn import PandasAddColumn
 from predefined_nodes.pandas.AsType import PandasAsType
 from predefined_nodes.pandas.CheckDataTypes import PandasCheckDtypes
@@ -17,14 +25,17 @@ from predefined_nodes.pandas.ColumnStatisticsCalculate import (
     PandasColumnStatisticsCalculate,
 )
 from predefined_nodes.pandas.CombineColumn import PandasCombineColumn
+from predefined_nodes.pandas.Cut import PandasCut
 from predefined_nodes.pandas.DropColumn import PandasDropColumn
 from predefined_nodes.pandas.FillNA import PandasFillNA
+from predefined_nodes.pandas.GetDummies import PandasGetDummies
 from predefined_nodes.pandas.MathOperationIntoColumn import (
     PandasMathOperationIntoColumn,
 )
 from predefined_nodes.pandas.PandasReadFile import PandasReadFile
 from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
 from predefined_nodes.pandas.SplitColumn import SplitColumn
+from predefined_nodes.pandas.ToNumeric import PandasToNumeric
 from predefined_nodes.pandas.ValueCount import PandasValueCounts
 from predefined_nodes.seaborn.ShowMissingValueHeatmap import ShowMissingValueHeatMap
 from predefined_nodes.sklearn.cluster.Kmeans import SklearnKmeans
@@ -63,6 +74,8 @@ from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodel import (
 from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
     SklearnTransformPreprocessModelPandas,
 )
+from predefined_nodes.sklearn.tree.DecisionTree import SklearnDecisionTree
+from predefined_nodes.sklearn.utils.resample import FixImbalanceClass
 from predefined_nodes.stdin.ReadFile import ReadFile
 from predefined_nodes.stdout.PrintAny import PrintAny
 from predefined_nodes.stdout.PrintFloat import OutputFloatToStdoutNode
@@ -74,7 +87,6 @@ from predefined_nodes.string.StringInput import TextInputNode
 from predefined_nodes.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
-from predefined_nodes.mlxtend.frequent_patterns.apriori import MlxtendApriori
 
 
 class InterruptProcessingException(Exception):
@@ -159,6 +171,14 @@ NODE_CLASS_MAPPINGS: dict = {
     "PandasAddColumn": PandasAddColumn,
     "PandasAsType": PandasAsType,
     "MlxtendApriori": MlxtendApriori,
+    "MlxtendAssosicationRules": MlxtendAssosicationRules,
+    "MlxtendTransactionEncoder": MlxtendTransactionEncoder,
+    "PandasCut": PandasCut,
+    "PandasGetDummies": PandasGetDummies,
+    "SklearnDecisionTree": SklearnDecisionTree,
+    "ImblearnSmote": ImblearnSmote,
+    "PandasToNumeric": PandasToNumeric,
+    "FixImbalanceClass": FixImbalanceClass,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -207,6 +227,14 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PandasAddColumn": "Add Column into Dataframe",
     "PandasAsType": "Pandas Dataframe AsType",
     "MlxtendApriori": "Apriori Frequent Itemset",
+    "MlxtendAssosicationRules": "Generate Assosication Rules",
+    "MlxtendTransactionEncoder": "Transaction Encoder Preprocessing Model",
+    "PandasCut": "Pandas Cut",
+    "PandasGetDummies": "Pandas Get Dummies",
+    "SklearnDecisionTree": "Decison Tree Model",
+    "ImblearnSmote": "Over-sampling by SMOTE",
+    "PandasToNumeric": "Convert Dataframe column into Numeric",
+    "FixImbalanceClass": "Fix Imbalance Class by resampling",
 }
 
 folder_names_and_paths = {}

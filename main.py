@@ -205,6 +205,7 @@ if __name__ == "__main__":
 
         if os.name == "nt" and address == "0.0.0.0":
             address = "127.0.0.1"
+        time.sleep(0.2)
         webbrowser.open(f"{scheme}://{address}:{port}")
 
     call_on_start = startup_server

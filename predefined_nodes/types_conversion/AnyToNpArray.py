@@ -1,5 +1,6 @@
 from predefined_nodes.types.any import any
 import numpy as np
+import pandas as pd
 
 
 class AnyToNumPyArray:
@@ -22,4 +23,10 @@ class AnyToNumPyArray:
     CATEGORY = "types_conversion"
 
     def convert_to_list(self, any):
-        return (np.array(any),)
+
+        if isinstance(any, pd.DataFrame):
+            return (any.to_numpy(),)
+        elif isinstance(any, pd.Series):
+            return (any.to_numpy(),)
+
+        return (any,)

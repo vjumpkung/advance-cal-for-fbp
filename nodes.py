@@ -11,6 +11,7 @@ import traceback
 from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
 from predefined_nodes.imblearn.over_sampling.SMOTE import ImblearnSmote
+from predefined_nodes.matplotlib.scatter_plot import CreateScatterPlot
 from predefined_nodes.mlxtend.frequent_patterns.apriori import MlxtendApriori
 from predefined_nodes.mlxtend.frequent_patterns.assosication_rules import (
     MlxtendAssosicationRules,
@@ -87,6 +88,7 @@ from predefined_nodes.string.StringInput import TextInputNode
 from predefined_nodes.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
+from predefined_nodes.image.previewimage import PreviewImage
 
 
 class InterruptProcessingException(Exception):
@@ -179,6 +181,8 @@ NODE_CLASS_MAPPINGS: dict = {
     "ImblearnSmote": ImblearnSmote,
     "PandasToNumeric": PandasToNumeric,
     "FixImbalanceClass": FixImbalanceClass,
+    "MatPlotlibScatterPlot": CreateScatterPlot,
+    "PreviewImage": PreviewImage,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -235,6 +239,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ImblearnSmote": "Over-sampling by SMOTE",
     "PandasToNumeric": "Convert Dataframe column into Numeric",
     "FixImbalanceClass": "Fix Imbalance Class by resampling",
+    "MatPlotlibScatterPlot": "Create Scatter Plot",
+    "PreviewImage": "Preview Image",
 }
 
 folder_names_and_paths = {}

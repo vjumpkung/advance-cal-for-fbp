@@ -93,6 +93,10 @@ class WorkflowServer:
 
         self.web_root = os.path.join(os.path.dirname(os.path.realpath(__file__)), "web")
 
+        self.temp_file = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), "temp"
+        )
+
         @routes.get("/ws")
         async def websocket_handler(request):
             ws = web.WebSocketResponse()
@@ -408,9 +412,7 @@ class WorkflowServer:
         #     )
 
         self.app.add_routes(
-            [
-                web.static("/", self.web_root),
-            ]
+            [web.static("/", self.web_root), web.static("/temp", self.temp_file)]
         )
 
     async def send(self, event, data, sid=None):

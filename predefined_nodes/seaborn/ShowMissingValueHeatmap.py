@@ -21,10 +21,10 @@ class ShowMissingValueHeatMap:
         }
 
     CATEGORY = "seaborn"
-    RETURN_TYPES = ()
+    RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ()
     FUNCTION = "show_missing_values"
-    OUTPUT_NODE = True
+    # OUTPUT_NODE = True
 
     def show_missing_values(self, dataframe: pd.DataFrame):
         hm = sns.heatmap(dataframe.isnull(), cbar=False, yticklabels=False)
@@ -32,6 +32,4 @@ class ShowMissingValueHeatMap:
         plt.tight_layout()
         fig = hm.get_figure()
         fig.savefig(imgfile)
-        img = Image.open(imgfile)
-        img.show()
-        return ()
+        return (f"/{imgfile}",)

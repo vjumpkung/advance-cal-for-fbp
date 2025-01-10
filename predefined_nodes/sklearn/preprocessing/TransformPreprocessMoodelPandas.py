@@ -31,9 +31,13 @@ class SklearnTransformPreprocessModelPandas:
 
         if COLUMNS != "":
             columns_idx = COLUMNS.split(",")
-            DATAFRAME[columns_idx] = preprocessing_model.transform(
-                DATAFRAME[columns_idx]
-            )
+            try:
+                for i in columns_idx:
+                    DATAFRAME[i] = preprocessing_model.transform(DATAFRAME[i])
+            except:
+                DATAFRAME[columns_idx] = preprocessing_model.transform(
+                    DATAFRAME[columns_idx]
+                )
             return (
                 DATAFRAME,
                 preprocessing_model,

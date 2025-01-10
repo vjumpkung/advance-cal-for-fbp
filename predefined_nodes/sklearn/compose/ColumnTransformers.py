@@ -21,9 +21,9 @@ class SklearnColumnTransformer:
 
     RETURN_TYPES = ("NDARRAY",)
 
-    FUNCTION = "createLabelEncoder"
+    FUNCTION = "createColumnTransformers"
 
-    def createLabelEncoder(self, X, transformers):
+    def createColumnTransformers(self, X, transformers):
 
         if transformers == "OneHotEncoder":
             ct = ColumnTransformer(

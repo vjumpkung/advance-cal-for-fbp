@@ -29,4 +29,4 @@ class AnyToNumPyArray:
         elif isinstance(any, pd.Series):
             return (any.to_numpy(),)
 
-        return (any,)
+        return (np.array(any),)

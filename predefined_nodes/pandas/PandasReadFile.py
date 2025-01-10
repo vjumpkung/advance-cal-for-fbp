@@ -10,7 +10,7 @@ class PandasReadFile:
                     "STRING",
                     {"select_file_path": True},
                 ),
-                "filetype": (["CSV", "EXCEL", "JSON", "TABLE"],),
+                "filetype": (["CSV", "EXCEL", "JSON"],),
             }
         }
 
@@ -27,7 +27,5 @@ class PandasReadFile:
             df = pd.read_excel(path)
         elif filetype == "JSON":
             df = pd.read_json(path)
-        elif filetype == "TABLE":
-            df = pd.read_table(path)
 
         return (df,)

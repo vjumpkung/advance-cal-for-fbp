@@ -1,5 +1,6 @@
 from sklearn.tree import DecisionTreeClassifier, export_text
 from predefined_nodes.types.any import any
+import pandas as pd
 
 
 class SklearnDecisionTree:
@@ -29,7 +30,7 @@ class SklearnDecisionTree:
 
     FUNCTION = "dt"
 
-    def dt(self, X, Y, criterion, max_depth, random_state):
+    def dt(self, X, Y, criterion="gini", max_depth=3, random_state=42):
 
         model = DecisionTreeClassifier(
             criterion=criterion, max_depth=max_depth, random_state=random_state
@@ -37,7 +38,10 @@ class SklearnDecisionTree:
 
         model.fit(X, Y)
 
-        pt = export_text(model, feature_names=list(X.columns))
+        if isinstance(X, pd.DataFrame):
+            pt = export_text(model, feature_names=list(X.columns))
+        else:
+            pt = export_text(model)
 
         return (
             model,

@@ -26,7 +26,7 @@ class ImblearnSmote:
 
     FUNCTION = "createSMOTE"
 
-    def createSMOTE(self, X, Y, random_state):
+    def createSMOTE(self, X, Y, random_state=42):
         smote = SMOTE(random_state=random_state)
 
         X_smote, Y_smote = smote.fit_resample(X, Y)

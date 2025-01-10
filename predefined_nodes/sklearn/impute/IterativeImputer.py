@@ -24,7 +24,7 @@ class SklearnIterativeImputer:
 
     FUNCTION = "crateImputer"
 
-    def crateImputer(self, max_iter, initial_strategy):
+    def crateImputer(self, max_iter=30, initial_strategy="mean"):
 
         imputer = IterativeImputer(
             estimator=LinearRegression(),

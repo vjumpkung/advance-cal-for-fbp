@@ -26,5 +26,5 @@ class WriteFile:
 
     def execute(self, path, filename, text):
         with open(os.path.join(path, filename), "w+", encoding="utf-8") as fp:
-            fp.write(str(text))
+            fp.write(str(text[0]))
         return ()

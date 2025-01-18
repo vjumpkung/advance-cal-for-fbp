@@ -1,0 +1,87 @@
+{
+    "workflow": {
+        "1": {
+            "inputs": {
+                "float_number": [
+                    "3",
+                    0
+                ]
+            },
+            "class_type": "ConvertFloatToString"
+        },
+        "3": {
+            "inputs": {
+                "value": 1
+            },
+            "class_type": "FLOATValue"
+        },
+        "5": {
+            "inputs": {
+                "text_1": [
+                    "1",
+                    0
+                ]
+            },
+            "class_type": "StringConcatNode"
+        },
+        "6": {
+            "inputs": {
+                "value": [
+                    "5",
+                    0
+                ]
+            },
+            "class_type": "OutputStringToStdout"
+        },
+        "7": {
+            "inputs": {
+                "operand": "+",
+                "a": [
+                    "3",
+                    0
+                ]
+            },
+            "class_type": "MathOperations"
+        },
+        "8": {
+            "inputs": {
+                "float_number": [
+                    "7",
+                    0
+                ]
+            },
+            "class_type": "ConvertFloatToString"
+        },
+        "9": {
+            "inputs": {
+                "text_1": [
+                    "8",
+                    0
+                ]
+            },
+            "class_type": "StringConcatNode"
+        },
+        "10": {
+            "inputs": {
+                "value": [
+                    "9",
+                    0
+                ]
+            },
+            "class_type": "OutputStringToStdout"
+        },
+        "11": {
+            "inputs": {},
+            "class_type": "StringConcatNode"
+        },
+        "12": {
+            "inputs": {
+                "text": [
+                    "11",
+                    0
+                ]
+            },
+            "class_type": "ShowText"
+        }
+    }
+}

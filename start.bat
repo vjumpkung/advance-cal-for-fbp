@@ -85,7 +85,7 @@ if not exist %MAIN_SCRIPT% (
 
 :: Launch the program
 echo Launching program...
-python %MAIN_SCRIPT%
+python %MAIN_SCRIPT% --autolaunch
 
 :: Deactivate virtual environment
 deactivate

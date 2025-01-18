@@ -8,3 +8,8 @@ openpyxl==3.1.5
 sniffio>=1.1
 mlxtend==0.23.3
 imbalanced-learn==0.13.0
+
+# testing lib
+pytest
+websocket-client
+requests

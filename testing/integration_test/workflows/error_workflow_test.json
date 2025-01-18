@@ -1,0 +1,57 @@
+{
+    "workflow": {
+        "5": {
+            "inputs": {
+                "operand": "/",
+                "a": [
+                    "6",
+                    0
+                ],
+                "b": [
+                    "7",
+                    0
+                ]
+            },
+            "class_type": "MathOperations"
+        },
+        "6": {
+            "inputs": {
+                "value": 0
+            },
+            "class_type": "FLOATValue"
+        },
+        "7": {
+            "inputs": {
+                "value": 0
+            },
+            "class_type": "FLOATValue"
+        },
+        "8": {
+            "inputs": {
+                "any": [
+                    "5",
+                    0
+                ]
+            },
+            "class_type": "Print into console"
+        },
+        "9": {
+            "inputs": {
+                "float_number": [
+                    "5",
+                    0
+                ]
+            },
+            "class_type": "ConvertFloatToString"
+        },
+        "10": {
+            "inputs": {
+                "text": [
+                    "9",
+                    0
+                ]
+            },
+            "class_type": "ShowText"
+        }
+    }
+}

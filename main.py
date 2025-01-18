@@ -6,7 +6,7 @@ import threading
 import time
 import gc
 from check_python_version import check_python_version
-
+import argparse
 import execution
 import nodes
 import server
@@ -102,7 +102,7 @@ def workflow_worker(q, server):
             execution_start_time = time.perf_counter()
             item, item_id = queue_item
             workflow_id = item[1]
-            server.last_prompt_id = workflow_id
+            server.last_workflow_id = workflow_id
             try:
                 executor = StoppableThread(
                     target=e.execute,
@@ -138,7 +138,7 @@ def workflow_worker(q, server):
                 if server.client_id is not None:
                     server.send_sync(
                         "executing",
-                        {"node": None, "prompt_id": workflow_id},
+                        {"node": None, "workflow_id": workflow_id},
                         server.client_id,
                     )
 
@@ -180,6 +180,13 @@ def workflow_worker(q, server):
 
 
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description="Process autolaunch flag")
+    parser.add_argument(
+        "--autolaunch", action="store_true", help="Automatically launch the application"
+    )
+    args = parser.parse_args()
+
     rm_files_in_directory("./input/", "file_goes_here")
     rm_files_in_directory("./temp/", "temp_goes_here")
     loop = asyncio.new_event_loop()
@@ -206,7 +213,8 @@ if __name__ == "__main__":
         if os.name == "nt" and address == "0.0.0.0":
             address = "127.0.0.1"
         time.sleep(0.2)
-        webbrowser.open(f"{scheme}://{address}:{port}")
+        if args.autolaunch:
+            webbrowser.open(f"{scheme}://{address}:{port}")
 
     call_on_start = startup_server
 

@@ -1,0 +1,17 @@
+{
+    "workflow": {
+        "1": {
+            "inputs": {},
+            "class_type": "Infinite Loop"
+        },
+        "2": {
+            "inputs": {
+                "value": [
+                    "1",
+                    0
+                ]
+            },
+            "class_type": "OutputStringToStdout"
+        }
+    }
+}

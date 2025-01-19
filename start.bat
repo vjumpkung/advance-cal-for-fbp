@@ -61,7 +61,7 @@ if exist %VENV_DIR% (
     
     :: Install/Update dependencies
     echo Checking and updating dependencies...
-    python -m pip install -r %REQUIREMENTS%
+    python -m pip install -r %REQUIREMENTS% --quiet
 ) else (
     echo Creating new virtual environment...
     python -m venv %VENV_DIR%

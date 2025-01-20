@@ -187,7 +187,6 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    rm_files_in_directory("./input/", "file_goes_here")
     rm_files_in_directory("./temp/", "temp_goes_here")
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -232,5 +231,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logging.info("Stopped server")
         clean_pycache(".")
-        rm_files_in_directory("./input/", "file_goes_here")
         rm_files_in_directory("./temp/", "temp_goes_here")

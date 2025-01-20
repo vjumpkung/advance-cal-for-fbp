@@ -10,6 +10,7 @@ import traceback
 
 from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
 from predefined_nodes.basic_arithmetic.operations import MathOperations
+from predefined_nodes.image.previewimage import PreviewImage
 from predefined_nodes.imblearn.over_sampling.SMOTE import ImblearnSmote
 from predefined_nodes.matplotlib.scatter_plot import CreateScatterPlot
 from predefined_nodes.mlxtend.frequent_patterns.apriori import MlxtendApriori
@@ -34,6 +35,7 @@ from predefined_nodes.pandas.MathOperationIntoColumn import (
     PandasMathOperationIntoColumn,
 )
 from predefined_nodes.pandas.PandasReadFile import PandasReadFile
+from predefined_nodes.pandas.PandasSaveFile import PandasSaveFile
 from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
 from predefined_nodes.pandas.SplitColumn import SplitColumn
 from predefined_nodes.pandas.ToNumeric import PandasToNumeric
@@ -88,7 +90,6 @@ from predefined_nodes.string.StringInput import TextInputNode
 from predefined_nodes.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
 from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
-from predefined_nodes.image.previewimage import PreviewImage
 
 
 class InterruptProcessingException(Exception):
@@ -183,6 +184,7 @@ NODE_CLASS_MAPPINGS: dict = {
     "FixImbalanceClass": FixImbalanceClass,
     "MatPlotlibScatterPlot": CreateScatterPlot,
     "PreviewImage": PreviewImage,
+    "PandasSaveFile": PandasSaveFile,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -241,6 +243,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "FixImbalanceClass": "Fix Imbalance Class by resampling",
     "MatPlotlibScatterPlot": "Create Scatter Plot",
     "PreviewImage": "Preview Image",
+    "PandasSaveFile": "Pandas Save File",
 }
 
 folder_names_and_paths = {}

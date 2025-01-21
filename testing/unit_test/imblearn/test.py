@@ -1,4 +1,4 @@
-from predefined_nodes.imblearn.over_sampling.SMOTE import ImblearnSmote
+from predefined_functions.imblearn.over_sampling.SMOTE import ImblearnSmote
 from collections import Counter
 from sklearn.datasets import make_classification
 import unittest

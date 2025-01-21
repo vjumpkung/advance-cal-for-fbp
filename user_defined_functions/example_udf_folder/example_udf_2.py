@@ -1,4 +1,4 @@
-class ExampleCustomNode2:
+class ExampleUDF2:
     @classmethod
     def INPUT_TYPES(cls):
         return {}
@@ -7,13 +7,7 @@ class ExampleCustomNode2:
     RETURN_NAME = ("text",)
     DESCRIPTION = "Example"
     FUNCTION = "example"
-    CATEGORY = "custom_node/example"
+    CATEGORY = "user_defined_function/example"
 
     def example(self):
         return ("Example Custom Node Folder #2",)
-
-
-NODE_CLASS_MAPPINGS = {"Example Custom Node Folder 2": ExampleCustomNode2}
-NODE_DISPLAY_NAME_MAPPINGS = {
-    "Example Custom Node": "Example Folder #2",
-}

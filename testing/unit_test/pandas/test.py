@@ -4,21 +4,21 @@ import numpy as np
 import pandas as pd
 from pandas.testing import assert_frame_equal, assert_series_equal
 
-from predefined_nodes.pandas.AddColumn import PandasAddColumn
-from predefined_nodes.pandas.ColumnStatisticsCalculate import (
+from predefined_functions.pandas.AddColumn import PandasAddColumn
+from predefined_functions.pandas.ColumnStatisticsCalculate import (
     PandasColumnStatisticsCalculate,
 )
-from predefined_nodes.pandas.CombineColumn import PandasCombineColumn
-from predefined_nodes.pandas.Cut import PandasCut
-from predefined_nodes.pandas.MathOperationIntoColumn import (
+from predefined_functions.pandas.CombineColumn import PandasCombineColumn
+from predefined_functions.pandas.Cut import PandasCut
+from predefined_functions.pandas.MathOperationIntoColumn import (
     PandasMathOperationIntoColumn,
 )
-from predefined_nodes.pandas.PandasReadFile import PandasReadFile
-from predefined_nodes.pandas.RemoveNA import PandasRemoveNA
-from predefined_nodes.pandas.ToNumeric import PandasToNumeric
-from predefined_nodes.pandas.ValueCount import PandasValueCounts
-from predefined_nodes.pandas.SplitColumn import SplitColumn
-from predefined_nodes.pandas.DropColumn import PandasDropColumn
+from predefined_functions.pandas.PandasReadFile import PandasReadFile
+from predefined_functions.pandas.RemoveNA import PandasRemoveNA
+from predefined_functions.pandas.ToNumeric import PandasToNumeric
+from predefined_functions.pandas.ValueCount import PandasValueCounts
+from predefined_functions.pandas.SplitColumn import SplitColumn
+from predefined_functions.pandas.DropColumn import PandasDropColumn
 
 
 class TestPandas(unittest.TestCase):

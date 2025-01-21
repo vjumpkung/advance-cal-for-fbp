@@ -1,6 +1,6 @@
 from sklearn.model_selection import train_test_split
 
-from predefined_nodes.types.any import any
+from predefined_functions.types.any import any
 
 
 class SklearnTrainTestSplit:

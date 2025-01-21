@@ -1,6 +1,6 @@
 import unittest
-from predefined_nodes.basic_arithmetic.FloatInput import FloatInputNode
-from predefined_nodes.basic_arithmetic.operations import MathOperations
+from predefined_functions.basic_arithmetic.FloatInput import FloatInputNode
+from predefined_functions.basic_arithmetic.operations import MathOperations
 
 
 class TestBasicArithmetic(unittest.TestCase):

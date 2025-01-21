@@ -1,8 +1,8 @@
 import unittest
 
-from predefined_nodes.types_conversion.AnyToNpArray import AnyToNumPyArray
-from predefined_nodes.types_conversion.AnyToString import ConvertAnyToString
-from predefined_nodes.types_conversion.FloatToString import ConvertFloatToString
+from predefined_functions.types_conversion.AnyToNpArray import AnyToNumPyArray
+from predefined_functions.types_conversion.AnyToString import ConvertAnyToString
+from predefined_functions.types_conversion.FloatToString import ConvertFloatToString
 import pandas as pd
 import numpy as np
 

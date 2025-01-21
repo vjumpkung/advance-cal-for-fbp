@@ -5,10 +5,9 @@ __pycache__/
 !/input/file_goes_here
 /temp/*
 !/temp/temp_goes_here
-/custom_nodes/*
-!/custom_nodes/example_custom_node_file.py
-!/custom_nodes/example_custom_node_folder/
-extra_model_paths.yaml
+/user_defined_functions/*
+!/user_defined_functions/example_udf_file.py
+!/user_defined_functions/example_udf_folder/
 /.vs
 .vscode/
 .idea/
@@ -23,3 +22,4 @@ web_custom_versions/
 .DS_Store
 .pytest_cache
 .pytest_cache/
+!infinite_loop.py

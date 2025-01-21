@@ -55,7 +55,7 @@ class IsChangedCache:
 
         node = self.dynworkflow.get_node(node_id)
         class_type = node["class_type"]
-        class_def = nodes.NODE_CLASS_MAPPINGS[class_type]
+        class_def = nodes.UDF_CLASS_MAPPINGS[class_type]
         if not hasattr(class_def, "IS_CHANGED"):
             self.is_changed[node_id] = False
             return self.is_changed[node_id]
@@ -306,7 +306,7 @@ def execute(
     parent_node_id = dynworkflow.get_parent_node_id(unique_id)
     inputs = dynworkflow.get_node(unique_id)["inputs"]
     class_type = dynworkflow.get_node(unique_id)["class_type"]
-    class_def = nodes.NODE_CLASS_MAPPINGS[class_type]
+    class_def = nodes.UDF_CLASS_MAPPINGS[class_type]
     # if caches.outputs.get(unique_id) is not None:
     #     if server.client_id is not None:
     #         cached_output = caches.ui.get(unique_id) or {}
@@ -459,7 +459,7 @@ def execute(
                         )
                         # Figure out if the newly created node is an output node
                         class_type = node_info["class_type"]
-                        class_def = nodes.NODE_CLASS_MAPPINGS[class_type]
+                        class_def = nodes.UDF_CLASS_MAPPINGS[class_type]
                         if (
                             hasattr(class_def, "OUTPUT_NODE")
                             and class_def.OUTPUT_NODE == True
@@ -669,7 +669,7 @@ def validate_inputs(workflow, item, validated):
 
     inputs = workflow[unique_id]["inputs"]
     class_type = workflow[unique_id]["class_type"]
-    obj_class = nodes.NODE_CLASS_MAPPINGS[class_type]
+    obj_class = nodes.UDF_CLASS_MAPPINGS[class_type]
 
     class_inputs = obj_class.INPUT_TYPES()
     valid_inputs = set(class_inputs.get("required", {})).union(
@@ -720,7 +720,7 @@ def validate_inputs(workflow, item, validated):
 
             o_id = val[0]
             o_class_type = workflow[o_id]["class_type"]
-            r = nodes.NODE_CLASS_MAPPINGS[o_class_type].RETURN_TYPES
+            r = nodes.UDF_CLASS_MAPPINGS[o_class_type].RETURN_TYPES
             received_type = r[val[1]]
             received_types[x] = received_type
             if (
@@ -913,7 +913,7 @@ def validate_workflow(workflow):
             return (False, error, [], [])
 
         class_type = workflow[x]["class_type"]
-        class_ = nodes.NODE_CLASS_MAPPINGS.get(class_type, None)
+        class_ = nodes.UDF_CLASS_MAPPINGS.get(class_type, None)
         if class_ is None:
             error = {
                 "type": "invalid_workflow",

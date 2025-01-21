@@ -6,58 +6,60 @@ import scipy
 from sklearn.datasets import load_iris
 from sklearn.experimental import enable_iterative_imputer
 
-from predefined_nodes.sklearn.cluster.Kmeans import KMeans, SklearnKmeans
-from predefined_nodes.sklearn.compose.ColumnTransformers import SklearnColumnTransformer
-from predefined_nodes.sklearn.impute.IterativeImputer import (
+from predefined_functions.sklearn.cluster.Kmeans import KMeans, SklearnKmeans
+from predefined_functions.sklearn.compose.ColumnTransformers import (
+    SklearnColumnTransformer,
+)
+from predefined_functions.sklearn.impute.IterativeImputer import (
     IterativeImputer,
     SklearnIterativeImputer,
 )
-from predefined_nodes.sklearn.linear_model.LinearRegression import (
+from predefined_functions.sklearn.linear_model.LinearRegression import (
     LinearRegression,
     SklearnLinearRegression,
 )
-from predefined_nodes.sklearn.linear_model.LogisticRegression import (
+from predefined_functions.sklearn.linear_model.LogisticRegression import (
     LogisticRegression,
     SklearnLogisticRegression,
 )
-from predefined_nodes.sklearn.metrics.ClassificationReport import (
+from predefined_functions.sklearn.metrics.ClassificationReport import (
     SklearnClassificationReport,
 )
-from predefined_nodes.sklearn.metrics.ModelScore import SklearnModelScore
-from predefined_nodes.sklearn.neighbors.KNeighborsClassifier import (
+from predefined_functions.sklearn.metrics.ModelScore import SklearnModelScore
+from predefined_functions.sklearn.neighbors.KNeighborsClassifier import (
     KNeighborsClassifier,
     SklearnKNeighborsClassifier,
 )
-from predefined_nodes.sklearn.predict.Predict import SklearnModelPredict
-from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModel import (
+from predefined_functions.sklearn.predict.Predict import SklearnModelPredict
+from predefined_functions.sklearn.preprocessing.FitTransformPreprocessModel import (
     SklearnFitTransformPreprocessModel,
 )
-from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModelPandas import (
+from predefined_functions.sklearn.preprocessing.FitTransformPreprocessModelPandas import (
     SklearnFitTransformPreprocessModelPandas,
 )
-from predefined_nodes.sklearn.preprocessing.LabelEncoder import (
+from predefined_functions.sklearn.preprocessing.LabelEncoder import (
     LabelEncoder,
     SklearnLabelEncoder,
 )
-from predefined_nodes.sklearn.preprocessing.MinMaxScaler import (
+from predefined_functions.sklearn.preprocessing.MinMaxScaler import (
     MinMaxScaler,
     SklearnMinMaxScaler,
 )
-from predefined_nodes.sklearn.preprocessing.OneHotEncoder import (
+from predefined_functions.sklearn.preprocessing.OneHotEncoder import (
     OneHotEncoder,
     SklearnOneHotEncoder,
 )
-from predefined_nodes.sklearn.preprocessing.StandardScaler import (
+from predefined_functions.sklearn.preprocessing.StandardScaler import (
     SklearnStandardScaler,
     StandardScaler,
 )
-from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodel import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodel import (
     SklearnTransformPreprocessModel,
 )
-from predefined_nodes.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
     SklearnTransformPreprocessModelPandas,
 )
-from predefined_nodes.sklearn.tree.DecisionTree import (
+from predefined_functions.sklearn.tree.DecisionTree import (
     DecisionTreeClassifier,
     SklearnDecisionTree,
 )

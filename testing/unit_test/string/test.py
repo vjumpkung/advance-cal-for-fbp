@@ -1,7 +1,7 @@
 import unittest
 
-from predefined_nodes.string.StringConcat import StringConcatNode
-from predefined_nodes.string.StringInput import TextInputNode
+from predefined_functions.string.StringConcat import StringConcatNode
+from predefined_functions.string.StringInput import TextInputNode
 
 
 class TestString(unittest.TestCase):

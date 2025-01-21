@@ -1,12 +1,12 @@
 import unittest
-from predefined_nodes.mlxtend.frequent_patterns.apriori import MlxtendApriori
-from predefined_nodes.mlxtend.frequent_patterns.assosication_rules import (
+from predefined_functions.mlxtend.frequent_patterns.apriori import MlxtendApriori
+from predefined_functions.mlxtend.frequent_patterns.assosication_rules import (
     MlxtendAssosicationRules,
 )
-from predefined_nodes.mlxtend.preprocessing.TransactionEncoder import (
+from predefined_functions.mlxtend.preprocessing.TransactionEncoder import (
     MlxtendTransactionEncoder,
 )
-from predefined_nodes.sklearn.preprocessing.FitTransformPreprocessModel import (
+from predefined_functions.sklearn.preprocessing.FitTransformPreprocessModel import (
     SklearnFitTransformPreprocessModel,
 )
 import pandas as pd

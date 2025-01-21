@@ -1,4 +1,4 @@
-from predefined_nodes.types.any import any
+from predefined_functions.types.any import any
 import numpy as np
 import pandas as pd
 

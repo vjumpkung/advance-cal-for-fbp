@@ -262,7 +262,7 @@ class WorkflowServer:
                 )
 
         def node_info(node_class):
-            obj_class = nodes.NODE_CLASS_MAPPINGS[node_class]
+            obj_class = nodes.UDF_CLASS_MAPPINGS[node_class]
             info = {}
             info["input"] = obj_class.INPUT_TYPES()
             info["input_order"] = {
@@ -282,8 +282,8 @@ class WorkflowServer:
             )
             info["name"] = node_class
             info["display_name"] = (
-                nodes.NODE_DISPLAY_NAME_MAPPINGS[node_class]
-                if node_class in nodes.NODE_DISPLAY_NAME_MAPPINGS.keys()
+                nodes.UDF_DISPLAY_NAME_MAPPINGS[node_class]
+                if node_class in nodes.UDF_DISPLAY_NAME_MAPPINGS.keys()
                 else node_class
             )
             info["description"] = (
@@ -313,7 +313,7 @@ class WorkflowServer:
         @routes.get("/object_info")
         async def get_object_info(request):
             out = {}
-            for x in nodes.NODE_CLASS_MAPPINGS:
+            for x in nodes.UDF_CLASS_MAPPINGS:
                 try:
                     out[x] = node_info(x)
                 except Exception as e:
@@ -327,7 +327,7 @@ class WorkflowServer:
         async def get_object_info_node(request):
             node_class = request.match_info.get("node_class", None)
             out = {}
-            if (node_class is not None) and (node_class in nodes.NODE_CLASS_MAPPINGS):
+            if (node_class is not None) and (node_class in nodes.UDF_CLASS_MAPPINGS):
                 out[node_class] = node_info(node_class)
             return web.json_response(out)
 

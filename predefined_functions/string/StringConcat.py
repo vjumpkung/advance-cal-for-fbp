@@ -8,14 +8,16 @@ class StringConcatNode:
                     {
                         "forceInput": True,
                     },
-                ),
+                )
+            },
+            "optional": {
                 "text_2": (
                     "STRING",
                     {
                         "forceInput": True,
                     },
                 ),
-            }
+            },
         }
 
     RETURN_TYPES = ("STRING",)
@@ -23,5 +25,5 @@ class StringConcatNode:
     FUNCTION = "concat_string"
     CATEGORY = "base"
 
-    def concat_string(self, text_1: str, text_2: str):
+    def concat_string(self, text_1: str = "", text_2: str = ""):
         return (text_1 + text_2,)

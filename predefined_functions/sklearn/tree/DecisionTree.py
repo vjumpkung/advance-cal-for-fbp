@@ -1,5 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier, export_text
-from predefined_nodes.types.any import any
+from predefined_functions.types.any import any
 import pandas as pd
 
 

@@ -12,7 +12,9 @@
                 "NDARRAY": "#6EE7B7",
                 "PD_DATAFRAME": "#FAC67A",
                 "PD_SERIES": "#3b4bff",
-                "MODEL": "#9B3922"
+                "MODEL": "#9B3922",
+                "IMAGE": "#98D8EF",
+                "*": "#FFFFFF"
             }
         }
     }

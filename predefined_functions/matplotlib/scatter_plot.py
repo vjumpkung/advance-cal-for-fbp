@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import random
-from PIL import Image
+from predefined_functions.types.list import list_types
 
 
 class CreateScatterPlot:
     @classmethod
     def INPUT_TYPES(self):
-        return {"required": {"X": ("NDARRAY",), "Y": ("NDARRAY",)}}
+        return {"required": {"X": (list_types,), "Y": (list_types,)}}
 
     CATEGORY = "matplotlib"
 
@@ -20,6 +20,4 @@ class CreateScatterPlot:
         plt.tight_layout()
         fig = plot.get_figure()
         fig.savefig(imgfile)
-        # img = Image.open(imgfile)
-        # img.show()
         return (f"/{imgfile}",)

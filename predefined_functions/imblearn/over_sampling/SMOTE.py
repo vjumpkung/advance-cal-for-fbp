@@ -1,4 +1,5 @@
 from imblearn.over_sampling import SMOTE
+from predefined_functions.types.list import list_types
 
 
 class ImblearnSmote:
@@ -6,8 +7,8 @@ class ImblearnSmote:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("PD_DATAFRAME",),
-                "Y": ("PD_DATAFRAME",),
+                "X": (list_types,),
+                "Y": (list_types,),
                 "random_state": ("INT", {"defaultVal": 42}),
             }
         }
@@ -20,8 +21,8 @@ class ImblearnSmote:
     )
 
     RETURN_TYPES = (
-        "PD_DATAFRAME",
-        "PD_DATAFRAME",
+        list_types,
+        list_types,
     )
 
     FUNCTION = "createSMOTE"

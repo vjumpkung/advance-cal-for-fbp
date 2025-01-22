@@ -14,7 +14,9 @@
                 "PD_SERIES": "#3b4bff",
                 "MODEL": "#9B3922",
                 "IMAGE": "#98D8EF",
-                "*": "#FFFFFF"
+                "*": "#FFFFFF",
+                "NDARRAY,PD_DATAFRAME,PD_SERIES": "#6d26e0",
+                "PREPROCESSING_MODEL": "#e37b74"
             }
         }
     }

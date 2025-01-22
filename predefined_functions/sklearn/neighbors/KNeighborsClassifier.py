@@ -1,4 +1,5 @@
 from sklearn.neighbors import KNeighborsClassifier
+from predefined_functions.types.list import list_types
 
 
 class SklearnKNeighborsClassifier:
@@ -6,9 +7,9 @@ class SklearnKNeighborsClassifier:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("NDARRAY",),
-                "Y": ("NDARRAY",),
-                "n_neighbors": ("INT", {"defaultVal": 1, "min": 1}),
+                "X": (list_types,),
+                "Y": (list_types,),
+                "n_neighbors": ("INT", {"defaultVal": 1, "min": 1, "step": 1}),
             }
         }
 

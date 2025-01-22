@@ -21,7 +21,7 @@ class WriteFile:
 
     RETURN_TYPES = ()
     RETURN_NAMES = ()
-    FUNCTION = "execute"
+    FUNCTION = "base/stdout"
     OUTPUT_NODE = True
 
     def execute(self, path, filename, text):

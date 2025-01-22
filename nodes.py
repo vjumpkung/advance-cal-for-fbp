@@ -77,10 +77,10 @@ from predefined_functions.sklearn.preprocessing.OneHotEncoder import (
 from predefined_functions.sklearn.preprocessing.StandardScaler import (
     SklearnStandardScaler,
 )
-from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodel import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessModel import (
     SklearnTransformPreprocessModel,
 )
-from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessModelPandas import (
     SklearnTransformPreprocessModelPandas,
 )
 from predefined_functions.sklearn.tree.DecisionTree import SklearnDecisionTree
@@ -96,6 +96,12 @@ from predefined_functions.string.StringInput import TextInputNode
 from predefined_functions.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_functions.types_conversion.AnyToString import ConvertAnyToString
 from predefined_functions.types_conversion.FloatToString import ConvertFloatToString
+from predefined_functions.sklearn.preprocessing.LabelEncoderFitTransform import (
+    SklearnLabelEncoderFitTransform,
+)
+from predefined_functions.sklearn.preprocessing.FitTransformPreprocessingModel import (
+    SklearnPreprocessingModelFitTransform,
+)
 
 
 class InterruptProcessingException(Exception):
@@ -191,6 +197,7 @@ UDF_CLASS_MAPPINGS: dict = {
     "MatPlotlibScatterPlot": CreateScatterPlot,
     "PreviewImage": PreviewImage,
     "PandasSaveFile": PandasSaveFile,
+    "SklearnPreprocessingModelFitTransform": SklearnPreprocessingModelFitTransform,
 }
 
 UDF_DISPLAY_NAME_MAPPINGS = {
@@ -216,7 +223,7 @@ UDF_DISPLAY_NAME_MAPPINGS = {
     "SklearnModelPredict": "Model Predict",
     "SklearnModelScore": "Genearate Model Score",
     "SklearnLogisticRegression": "Logistic Regression",
-    "SklearnFitTransformPreprocessModel": "Fit Transform data using Preprocessing Model",
+    "SklearnFitTransformPreprocessModel": "(deprecated) Fit Transform data using Preprocessing Model",
     "PandasDropColumn": "Drop Column",
     "PandasFillNA": "Fill Missing Value",
     "PandasRemoveNA": "Drop Missing Value Rows",
@@ -226,14 +233,14 @@ UDF_DISPLAY_NAME_MAPPINGS = {
     "AnyToNumpyArray": "Convert To NumpyArray",
     "SklearnColumnTransformer": "Column Transformer",
     "SklearnStandardScaler": "Standard Scaler Preprocessing Model",
-    "SklearnTransformPreprocessModel": "Transform data using Preprocessing Model",
+    "SklearnTransformPreprocessModel": "(deprecated) Transform data using Preprocessing Model",
     "SklearnKNeighborsClassifier": "Known Nearest Neighbors (KNN) Model",
     "SklearnClassificationReport": "Classificaton Report",
     "PandasCombineColumn": "Combine Column(s) by math operation",
     "PandasMathOperationIntoColumn": "Math operation into column(s)",
     "SklearnIterativeImputerMICE": "MICE preprocessing method",
-    "SklearnFitTransformPreprocessModelPandas": "Fit Transform data using Preprocessing Model (PANDAS)",
-    "SklearnTransformPreprocessModelPandas": "Transform data using Preprocessing Model (PANDAS)",
+    "SklearnFitTransformPreprocessModelPandas": "(deprecated) Fit Transform data using Preprocessing Model (PANDAS)",
+    "SklearnTransformPreprocessModelPandas": "(deprecated) Transform data using Preprocessing Model (PANDAS)",
     "SklearnKmeans": "K-Means Clustering Model",
     "SklearnMinMaxScaler": "Min-Max Scaler Preprocessing Model",
     "PandasAddColumn": "Add Column into Dataframe",
@@ -250,6 +257,8 @@ UDF_DISPLAY_NAME_MAPPINGS = {
     "MatPlotlibScatterPlot": "Create Scatter Plot",
     "PreviewImage": "Preview Image",
     "PandasSaveFile": "Pandas Save File",
+    "SklearnLabelEncoderFitTransform": "Label Encoder Fit Transform",
+    "SklearnPreprocessingModelFitTransform": "Preprocessing Model Fit Transform",
 }
 
 folder_names_and_paths = {}

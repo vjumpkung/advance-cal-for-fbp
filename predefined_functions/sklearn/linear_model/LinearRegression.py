@@ -1,4 +1,5 @@
 from sklearn.linear_model import LinearRegression
+from predefined_functions.types.list import list_types
 
 
 class SklearnLinearRegression:
@@ -6,8 +7,8 @@ class SklearnLinearRegression:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("NDARRAY",),
-                "Y": ("NDARRAY",),
+                "X": (list_types,),
+                "Y": (list_types,),
                 "fit_intercept": ("BOOLEAN", {"defaultVal": True}),
                 "copy_X": ("BOOLEAN", {"defaultVal": True}),
                 "positive": ("BOOLEAN", {"defaultVal": False}),

@@ -1,4 +1,4 @@
-from predefined_functions.types.any import any
+from predefined_functions.types.list import list_types
 
 
 class SklearnModelScore:
@@ -7,8 +7,8 @@ class SklearnModelScore:
         return {
             "required": {
                 "model": ("MODEL", {"forceInput": True}),
-                "X_test": (any, {"forceInput": True}),
-                "Y_test": (any, {"forceInput": True}),
+                "X_test": (list_types, {"forceInput": True}),
+                "Y_test": (list_types, {"forceInput": True}),
             }
         }
 

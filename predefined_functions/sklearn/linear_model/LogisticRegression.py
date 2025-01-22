@@ -1,4 +1,5 @@
 from sklearn.linear_model import LogisticRegression
+from predefined_functions.types.list import list_types
 
 
 class SklearnLogisticRegression:
@@ -6,8 +7,8 @@ class SklearnLogisticRegression:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": ("NDARRAY",),
-                "Y": ("NDARRAY",),
+                "X": (list_types,),
+                "Y": (list_types,),
                 "random_state": ("INT", {"default": 42}),
             }
         }

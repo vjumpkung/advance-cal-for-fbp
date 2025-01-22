@@ -53,10 +53,10 @@ from predefined_functions.sklearn.preprocessing.StandardScaler import (
     SklearnStandardScaler,
     StandardScaler,
 )
-from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodel import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessModel import (
     SklearnTransformPreprocessModel,
 )
-from predefined_functions.sklearn.preprocessing.TransformPreprocessMoodelPandas import (
+from predefined_functions.sklearn.preprocessing.TransformPreprocessModelPandas import (
     SklearnTransformPreprocessModelPandas,
 )
 from predefined_functions.sklearn.tree.DecisionTree import (

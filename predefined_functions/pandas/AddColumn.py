@@ -1,5 +1,5 @@
 import pandas as pd
-from predefined_functions.types.any import any
+from predefined_functions.types.list import list_types
 
 
 class PandasAddColumn:
@@ -9,7 +9,7 @@ class PandasAddColumn:
             "required": {
                 "dataframe": ("PD_DATAFRAME",),
                 "newColumnName": ("STRING",),
-                "value": (any,),
+                "value": (list_types,),
             }
         }
 

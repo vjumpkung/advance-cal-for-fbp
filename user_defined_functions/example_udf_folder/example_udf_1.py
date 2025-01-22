@@ -4,7 +4,7 @@ class ExampleUDF1:
         return {}
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAME = ("text",)
+    RETURN_NAMES = ("text",)
     DESCRIPTION = "Example"
     FUNCTION = "example"
     CATEGORY = "user_defined_function/example"

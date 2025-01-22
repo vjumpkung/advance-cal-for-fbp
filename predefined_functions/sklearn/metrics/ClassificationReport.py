@@ -1,10 +1,11 @@
 from sklearn.metrics import confusion_matrix, classification_report
+from predefined_functions.types.list import list_types
 
 
 class SklearnClassificationReport:
     @classmethod
     def INPUT_TYPES(self):
-        return {"required": {"y_true": ("NDARRAY",), "y_pred": ("NDARRAY",)}}
+        return {"required": {"y_true": (list_types,), "y_pred": (list_types,)}}
 
     CATEGORY = "sklearn/metrics"
 
@@ -15,7 +16,7 @@ class SklearnClassificationReport:
 
     RETURN_TYPES = (
         "STRING",
-        "NDARRAY",
+        list_types,
     )
 
     FUNCTION = "get_classification_report"

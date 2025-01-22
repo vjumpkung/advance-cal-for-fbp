@@ -16,7 +16,7 @@ class OutputStringToStdoutNode:
     RETURN_NAMES = ()
     DESCRIPTION = "print string into console"
     FUNCTION = "execute"
-    CATEGORY = "base"
+    CATEGORY = "base/stdout"
     OUTPUT_NODE = True
 
     def execute(self, value):

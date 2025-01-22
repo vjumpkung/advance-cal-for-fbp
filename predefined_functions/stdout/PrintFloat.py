@@ -16,7 +16,7 @@ class OutputFloatToStdoutNode:
     RETURN_NAMES = ()
     DESCRIPTION = "print float into console"
     FUNCTION = "execute"
-    CATEGORY = "base"
+    CATEGORY = "base/stdout"
     OUTPUT_NODE = True
 
     def execute(self, value):

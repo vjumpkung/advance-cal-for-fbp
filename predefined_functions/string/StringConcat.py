@@ -8,9 +8,7 @@ class StringConcatNode:
                     {
                         "forceInput": True,
                     },
-                )
-            },
-            "optional": {
+                ),
                 "text_2": (
                     "STRING",
                     {

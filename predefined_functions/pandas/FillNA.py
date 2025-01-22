@@ -8,7 +8,7 @@ class PandasFillNA:
         return {
             "required": {
                 "dataframe": ("PD_DATAFRAME",),
-                "value": (any, {"forceInput": True}),
+                "value": (any,),
             },
             "optional": {"column": ("STRING",)},
         }

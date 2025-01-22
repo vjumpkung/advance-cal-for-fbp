@@ -6,6 +6,7 @@ python --version > temp.txt 2>&1
 if errorlevel 1 (
     echo Python is not installed. Please install Python and try again.
     del temp.txt
+    PAUSE
     exit /b 1
 )
 
@@ -25,18 +26,21 @@ for /f "tokens=1,2,3 delims=." %%a in ("%VERSION%") do (
 if %MAJOR% NEQ 3 (
     echo Error: Python version must be between 3.10 and 3.12
     echo Current version: %VERSION%
+    PAUSE
     exit /b 1
 )
 
 if %MINOR% LSS 10 (
     echo Error: Python version must be between 3.10 and 3.12
     echo Current version: %VERSION%
+    PAUSE
     exit /b 1
 )
 
 if %MINOR% GTR 12 (
     echo Error: Python version must be between 3.10 and 3.12
     echo Current version: %VERSION%
+    PAUSE
     exit /b 1
 )
 
@@ -50,6 +54,7 @@ set MAIN_SCRIPT=main.py
 :: Check if requirements.txt exists
 if not exist %REQUIREMENTS% (
     echo Requirements file not found: %REQUIREMENTS%
+    PAUSE
     exit /b 1
 )
 
@@ -80,6 +85,7 @@ if exist %VENV_DIR% (
 :: Check if main.py exists
 if not exist %MAIN_SCRIPT% (
     echo Main script not found: %MAIN_SCRIPT%
+    PAUSE
     exit /b 1
 )
 
@@ -89,3 +95,4 @@ python %MAIN_SCRIPT% --autolaunch
 
 :: Deactivate virtual environment
 deactivate
+PAUSE

@@ -15,8 +15,8 @@ class SklearnTransformPreprocessModelPandas:
 
     CATEGORY = "sklearn/preprocessing"
 
-    RETURN_NAME = (
-        "Encoded labels",
+    RETURN_NAMES = (
+        "preprocessed data",
         "preprocessing_model",
     )
 

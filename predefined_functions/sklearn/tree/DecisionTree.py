@@ -1,5 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier, export_text
-from predefined_functions.types.any import any
+from predefined_functions.types.list import list_types
 import pandas as pd
 
 
@@ -8,8 +8,8 @@ class SklearnDecisionTree:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": (any,),
-                "Y": (any,),
+                "X": (list_types,),
+                "Y": (list_types,),
                 "criterion": (["entropy", "gini", "log_loss"], {"defaultVal": "gini"}),
                 "max_depth": ("INT", {"defaultVal": 3, "min": 1}),
                 "random_state": ("INT", {"defaultVal": 0}),

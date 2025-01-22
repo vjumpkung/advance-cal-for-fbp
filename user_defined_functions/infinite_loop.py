@@ -4,7 +4,7 @@ class InfiniteLoop:
         return {}
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAME = ("text",)
+    RETURN_NAMES = ("text",)
     FUNCTION = "example"
     CATEGORY = "custom_node/example"
 

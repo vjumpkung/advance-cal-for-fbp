@@ -7,7 +7,7 @@ class FloatInputNode:
     RETURN_NAMES = ("value",)
     DESCRIPTION = "Value input"
     FUNCTION = "execute"
-    CATEGORY = "base"
+    CATEGORY = "base/Math"
 
     def execute(self, value):
         return (value,)

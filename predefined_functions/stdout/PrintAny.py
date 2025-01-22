@@ -20,7 +20,7 @@ class PrintAny:
     RETURN_NAMES = ()
     DESCRIPTION = "print into console"
     FUNCTION = "execute"
-    CATEGORY = "console"
+    CATEGORY = "base/stdout"
     OUTPUT_NODE = True
 
     def execute(self, any=None):

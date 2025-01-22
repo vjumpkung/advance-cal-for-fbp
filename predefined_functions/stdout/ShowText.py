@@ -16,7 +16,7 @@ class ShowText:
     OUTPUT_NODE = True
     # OUTPUT_IS_LIST = (True,)
 
-    CATEGORY = "base"
+    CATEGORY = "base/stdout"
 
     def notify(self, text):
         if len(text) > 1000:

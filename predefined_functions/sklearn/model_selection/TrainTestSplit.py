@@ -1,6 +1,6 @@
 from sklearn.model_selection import train_test_split
 
-from predefined_functions.types.any import any
+from predefined_functions.types.list import list_types
 
 
 class SklearnTrainTestSplit:
@@ -8,10 +8,10 @@ class SklearnTrainTestSplit:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "X": (any, {"forceInput": True}),
-                "Y": (any, {"forceInput": True}),
+                "X": (list_types,),
+                "Y": (list_types,),
                 "test_size": ("FLOAT", {"min": 0, "max": 1, "step": 0.01}),
-                "random_state": ("INT",),
+                "random_state": ("INT", {"min": 0}),
             }
         }
 
@@ -25,10 +25,10 @@ class SklearnTrainTestSplit:
     )
 
     RETURN_TYPES = (
-        "NDARRAY",
-        "NDARRAY",
-        "NDARRAY",
-        "NDARRAY",
+        list_types,
+        list_types,
+        list_types,
+        list_types,
     )
 
     FUNCTION = "traintestsplit"

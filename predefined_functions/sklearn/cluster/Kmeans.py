@@ -6,14 +6,14 @@ class SklearnKmeans:
     def INPUT_TYPES(self):
         return {
             "required": {
-                "n_clusters": ("INT", {"defaultVal": 3}),
+                "n_clusters": ("INT", {"defaultVal": 2, "min": 1, "step": 1}),
                 "X": ("NDARRAY",),
             },
         }
 
     CATEGORY = "sklearn/cluster"
 
-    RETURN_NAME = (
+    RETURN_NAMES = (
         "model",
         "y_pred",
     )

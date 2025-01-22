@@ -38,7 +38,7 @@
 
 ## Google Colab Version (easy use)
 
-- [Google Colab URL](https://colab.research.google.com/github/vjumpkung/advance-cal-for-fbp/blob/main/colab/adv_fbp_colab.ipynb)
+- [Google Colab URL](https://colab.research.google.com/github/vjumpkung/advance-cal-for-fbp/blob/master/colab/adv_fbp_colab.ipynb)
 ## User Manual (TH)
 
 - [Google Docs](https://docs.google.com/document/d/1bbiVAc6q6q--TE6KM_c_m6B3Ol9Y3-dX1xgRRgZgUaU/edit?usp=sharing)

@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from PIL import Image
+from predefined_functions.image.generate_image_path import generate_image_save_path
 
 logging.getLogger("matplotlib.font_manager").disabled = True
 matplotlib.use("agg")
@@ -24,11 +24,10 @@ class ShowMissingValueHeatMap:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ()
     FUNCTION = "show_missing_values"
-    # OUTPUT_NODE = True
 
     def show_missing_values(self, dataframe: pd.DataFrame):
         hm = sns.heatmap(dataframe.isnull(), cbar=False, yticklabels=False)
-        imgfile = f"temp/{hex(hash(random.randint(1000000,9999999)))[2:]}.png"
+        imgfile = generate_image_save_path()
         plt.tight_layout()
         fig = hm.get_figure()
         fig.savefig(imgfile)

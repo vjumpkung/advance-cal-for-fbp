@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-import random
 from predefined_functions.types.list import list_types
+from predefined_functions.image.generate_image_path import generate_image_save_path
 
 
 class CreateScatterPlot:
@@ -15,9 +15,13 @@ class CreateScatterPlot:
     FUNCTION = "show_scatter_plot"
 
     def show_scatter_plot(self, X, Y):
+
         plot = plt.scatter(X, Y)
-        imgfile = f"temp/{hex(hash(random.randint(1000000,9999999)))[2:]}.png"
+
+        imgfile = generate_image_save_path()
+
         plt.tight_layout()
         fig = plot.get_figure()
         fig.savefig(imgfile)
+
         return (f"/{imgfile}",)

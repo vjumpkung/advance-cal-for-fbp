@@ -63,6 +63,9 @@ from predefined_functions.sklearn.neighbors.KNeighborsClassifier import (
     SklearnKNeighborsClassifier,
 )
 from predefined_functions.sklearn.predict.Predict import SklearnModelPredict
+from predefined_functions.sklearn.preprocessing.FitTransformPreprocessingModel import (
+    SklearnPreprocessingModelFitTransform,
+)
 from predefined_functions.sklearn.preprocessing.FitTransformPreprocessModel import (
     SklearnFitTransformPreprocessModel,
 )
@@ -96,12 +99,6 @@ from predefined_functions.string.StringInput import TextInputNode
 from predefined_functions.types_conversion.AnyToNpArray import AnyToNumPyArray
 from predefined_functions.types_conversion.AnyToString import ConvertAnyToString
 from predefined_functions.types_conversion.FloatToString import ConvertFloatToString
-from predefined_functions.sklearn.preprocessing.LabelEncoderFitTransform import (
-    SklearnLabelEncoderFitTransform,
-)
-from predefined_functions.sklearn.preprocessing.FitTransformPreprocessingModel import (
-    SklearnPreprocessingModelFitTransform,
-)
 
 
 class InterruptProcessingException(Exception):

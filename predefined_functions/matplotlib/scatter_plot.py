@@ -16,6 +16,7 @@ class CreateScatterPlot:
 
     def show_scatter_plot(self, X, Y):
 
+        plt.clf()
         plot = plt.scatter(X, Y)
 
         imgfile = generate_image_save_path()
